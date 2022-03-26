@@ -1,6 +1,30 @@
 * {
   font-family: Poppins, Questrial, sans-serif;
 }
-body{
+.home_body{
   background-color: rgba(115, 99, 138);
+}
+.navbar{
+  background-color: white;
+}
+.navbar-brand{
+  margin-left: 70px;
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+}
+.nav-link{
+  margin-right: 30px;
+  font-size: 25px;
+  font-weight: bold;
+  color: rgba(71,69,69,100)
+}
+.nav-link:focus, .nav-link:hover, .navbar-brand:hover{
+  color: #694ED6;
+}
+.active{
+  color: #694ED6;
+}
+.row{
+  color:black;
 }
