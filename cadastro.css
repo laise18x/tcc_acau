@@ -16,27 +16,37 @@ h4 {
 	margin-left: 70px;
 	font-size: 15px;
 	font-weight: bold;
-	margin-top: 60px;
+	margin-top: 50px;
+}
+
+.valid:before {
+  position: relative;
+  left: -10px;
+  content: "✔";
+}
+
+.invalid:before {
+  position: relative;
+  left: -10px;
+  content: "✖";
 }
 
 .container2 p {
-	color: rgba(0, 0, 0, 0.5);
-	margin-left: 70px;
-	margin-right: 20px;
-	font-size: 13px;
+   color: rgba(0, 0, 0, 0.5);
+   margin-left: 70px;
+   margin-right: 20px;
+   font-size: 13px;
 
 }
 
-.container2 .form-check-label {
-	color: rgba(0, 0, 0, 0.5);
-	margin-left: 10px;
-	margin-right: 10px;
-	font-size: 13px;
+.container2 p.invalid {
+	color: red;
 }
 
-.container2 .form-check-input {
-	margin-left: 50px;
+.container2 p.valid {
+  color: green;
 }
+
 
 input.nome , .rg , .senha {
 	height: 50px;
@@ -69,30 +79,30 @@ button.submit {
 }
 
 .div_nome .icon {
-	color: black;
-	font-size: 20px;
-	position: absolute;
-	margin-left: 95px;
-	top: 237px;
-	opacity: 0.5;
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  margin-left: 95px;
+  top: 237px;
+  opacity: 0.5;
 }
 
 .div_rg .icon {
-	color: black;
-	font-size: 20px;
-	position: absolute;
-	margin-left: 95px;
-	top: 305px;
-	opacity: 0.5;
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  margin-left: 95px;
+  top: 305px;
+  opacity: 0.5;
 }
 
 .div_senha .icon {
-	color: black;
-	font-size: 20px;
-	position: absolute;
-	margin-left: 95px;
-	top:375px;
-	opacity: 0.5;
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  margin-left: 95px;
+  top:375px;
+  opacity: 0.5;
 }
 
 .dropdown {
@@ -133,18 +143,18 @@ button.submit {
 }
 
 #myProgress {
-	width: 80%;
-	background-color: #CCCC;
-	margin-top: 30px;
-	margin-left: 40px;
-	border-radius: 15px;
+  width: 80%;
+  background-color: #CCCC;
+  margin-top: 30px;
+  margin-left: 40px;
+  border-radius: 15px;
 }
 
 .myBar {
-	width: 1%;
-	height: 10px;
-	background-color: #694ED6;
-	border-radius: 15px;
+  width: 1%;
+  height: 10px;
+  background-color: #694ED6;
+  border-radius: 15px;
 }
 
 #play-animation {
