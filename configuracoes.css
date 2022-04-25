@@ -3,25 +3,6 @@ body {
 	background: #26335D;
 }
 
-/*Nav - Início */
-
-.container_nav {
-	background: white;
-	font-weight: bold;
-	position: absolute;
-	padding: 20px;
-	padding-right: 100px;
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-}
-
-.container_nav .btn{
-	font-weight: bold;
-}
-
-/*Nav - Fim */
 
 h2 {
 	color: white;
@@ -36,17 +17,8 @@ h2 {
 
 /*Containers - Início */
 
-.container2 .form-check-label {
-	color: rgba(0, 0, 0, 0.5);
-	margin-left: 10px;
-	margin-right: 10px;
-	margin-top: 30px;
-	font-size: 13px;
-}
-
-.container2 .form-check-input {
-	margin-top: 30px;
-	margin-left: 50px;
+p#length {
+	margin-top: 70px;
 }
 
 input.senha_atual , .nova_senha , .confirmar_senha {
@@ -56,7 +28,7 @@ input.senha_atual , .nova_senha , .confirmar_senha {
 	margin-bottom: 20px;
 	margin-left: 80px;
 	background-color: #fff;
-	padding-left: 40px;
+	padding-left: 20px;
 	border-bottom: 1px solid #694ED6;
 	border-top: none;
 	border-left: none;
@@ -73,8 +45,9 @@ button {
 	border-radius: 8px;
 	height: 40px;
 	width: 200px;
-	margin-top: 40px;
-	margin-left: 600px;
+	margin-top: 150px;
+	margin-left: -500px;
+	margin-bottom: 50px;
 	letter-spacing: 2px;
 }
 
@@ -109,3 +82,47 @@ label {
 .div_senha_atual {
 	margin-top: 20px;
 }
+
+/*Início - Validação da senha*/
+
+.valid:before {
+  position: relative;
+  left: -10px;
+  content: "✔";
+}
+
+.invalid:before {
+  position: relative;
+  left: -10px;
+  content: "✖";
+}
+
+.container2 p {
+   color: rgba(0, 0, 0, 0.5);
+   margin-left: 70px;
+   margin-right: 20px;
+   font-size: 13px;
+
+}
+
+.container2 p.invalid {
+	color: red;
+}
+
+.container2 p.valid {
+  color: green;
+}
+
+/*Fim - Validação da senha*/
+
+/* Início - Mensagem de erro*/
+
+#msg-erro {
+	position: absolute;
+	top: 650px;
+	bottom: 50px;
+	left: 255px;
+}
+
+/* Fim - Mensagem de erro */
+
