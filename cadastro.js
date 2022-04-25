@@ -1,4 +1,4 @@
-        var senha = document.getElementById("psw");
+          var senha = document.getElementById("psw");
 
         /* Início barra de progresso */
 
@@ -32,8 +32,9 @@
 		senha.onkeyup = function() {
 
 		  // valida tamanho
-		  if(senha.value.length >= 8) {
-		  	length.style.color = 'green';
+		  var tamanho = 8;
+
+		  if((senha.value.length >= tamanho)) {
 		    length.classList.remove("invalid");
 		    length.classList.add("valid");
 		  } else {
