@@ -2,94 +2,126 @@
 <html lang="en">
   <head>
     <!-- Meta tags Obrigatórias -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ACAU - Fórum</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ACAU - Fórum</title>
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-  <!-- Estilo customizado -->
-  <link rel="stylesheet" type="text/css" href="forum.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--Font Awesome Icons-->
+    <script
+      src="https://kit.fontawesome.com/c38b27744a.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Estilo customizado -->
+    <link rel="stylesheet" type="text/css" href="forum.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
 
+  <body>
+    <header>
+      <!--Início cabeçalho-->
 
-  <body class="home_body">
-
-   <header><!--Início cabeçalho-->
-
+      <!--navbar-->
       <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Sair</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-        <i class="fa-solid fa-bars"></i>
-        </button>
-        <div
-          class="collapse justify-content-end navbar-collapse"
-          id="navbarSupportedContent"
-        >
-          <ul class="navbar-nav mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Suporte</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="configuracoes.html">Configurações</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="forum.html">Fórum</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Disciplinas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Guia de Carreira</a>
-            </li>
-          </ul>
+        <div class="container-fluid">
+          <a class="navbar-brand" href="login.html">Sair</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div
+            class="collapse justify-content-end navbar-collapse"
+            id="navbarSupportedContent"
+          >
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="suporte.html">Suporte</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="configuracoes.html">Configurações</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="forum.html">Fórum</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Disciplinas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="guiadecarreira.html"
+                  >Guia de Carreira</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--navbar end-->
+    </header>
+    <!--Fim cabeçalho-->
+    <div class="container mw-100">
+      <div class="row mt-5">
+        <div class="col-3 px-4 lateral">
+          <!--Início div lateral -->
+          <div class="info">
+            <div class="" >
+              <h4 class="nomeSocial mt-5 pb-3">Nome social</h4>
+              <h4 class="cursoNome pb-3">Curso</h4>
+              <a class="minhasPostagens pb-4" href="#">Minhas postagens</a>
+              <p class="regras pt-4 text-center">Regras</p>
+              <ol class="px-3 lh-lg">
+                <li class="pb-4">
+                  Não é permitido ferir os direitos humanos.
+                </li>
+                <li class="pb-4">Não é permitido usar palavras de baixo calão.</li>
+                <li class="pb-4">
+                  Não é permitido ofender colegas, professores ou a instituição
+                  de ensino.
+                </li>
+                <li class="pb-4">Não é permitido fazer anúncios.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <!--Fim div lateral -->
+        <div class="central col-9">
+          <!--Início barra de pesquisa-->
+          <form action="">
+            <button type="submit" class="btn-search"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
+            <input type="search" class="barra_pesquisa ps-4">
+          </form>
+          
+          <!--Fim barra de pesquisa-->
+          <div id="TAGS">
+            <p>
+              Tags: #PrimeiroSemestre, #Professores, #Disciplinas, #Avaliação,
+              #Dúvidas...
+            </p>
+          </div>
+          <div class="forum"></div>
         </div>
       </div>
-    </nav>
-      
-
-    </header><!--Fim cabeçalho-->
-
-    <div id="lateral"><!--Início div lateral -->
-      <h4 class="label_nomeSocial"> Nome social </h4>
-      <h4> Curso </h4>
-      
-      <a href="">Minhas postagens</a>
-
-      <p>Regras</p>
-
-      <ol>
-        <li class="label_lista">Não é permitido ferir os direitos humanos.</li>
-        <li>Não é permitido usar palavras de baixo calão.</li>
-        <li>Não é permitido ofender colegas, professores ou a instituição de ensino.</li>
-        <li>Não é permitido fazer anúncios.</li>
-      </ol>
-
-    </div><!--Fim div lateral -->
-
-    <!--Início barra de pesquisa-->
-    <input type="text" class="barra_pesquisa">
-    <!--Fim barra de pesquisa-->
-
-    <div id="TAGS">
-      <p>Tags: #PrimeiroSemestre, #Professores, #Disciplinas, #Avaliação, #Dúvidas... </p>
     </div>
 
     <script

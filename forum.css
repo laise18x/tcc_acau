@@ -1,93 +1,55 @@
 body {
-	font-family: 'Poppins', sans-serif;
-	background: #26335D;
+  background: #26335d;
 }
-
-
-#lateral {
-	position: absolute;
-	top: 150px;
-	height: 600px;
-	width: 250px;
-	background-color: white;
+.lateral {
+  background-color: white;
 }
+.nomeSocial,
+.cursoNome,
+.minhasPostagens {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 30px;
 
-h4 {
-	font-size: 13px;
-	margin-left: 20px;
+  color: #404040;
 }
-
-h4.label_nomeSocial {
-	margin-top: 30px;
+.regras {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 38px;
+  color: #404040;
 }
-
-#lateral a {
-	text-decoration: none;
-	color: black;
-	position: absolute;
-	top: 90px;
-	left: 20px;
-	font-size: 13px;
-}
-
-#lateral a:hover {
-	text-decoration: none;
-	color: #694ED6;
-	position: absolute;
-	top: 90px;
-	left: 20px;
-	font-size: 13px;
-}
-
-#lateral p {
-	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 15px;
-	position: absolute;
-	top: 140px;
-	left: 90px;
-}
-
-#lateral li {
-	font-size: 13px;
-	margin-top: 30px;
-	margin-right: 50px;
-	text-align: justify;
-}
-
-#lateral li.label_lista {
-	margin-top: 150px;
-}
-
-/*Lateral - Fim */
-
 /*Início barra de pesquisa */
 
-.barra_pesquisa {
-	border-radius: 30px;
-	width: 700px;
-	height: 40px;
-	position: absolute;
-	top: 150px;
-	left: 400px;
-	padding: 10px;
+.barra_pesquisa{
+  border-radius: 30px;
+  width: 700px;
+  height: 60px;
+  top: 150px;
+  margin-left: 12%;
+  padding: 10px;
 }
-
-
+.btn-search{
+	border: 0px;
+	background-color: transparent;
+	height: 40px;
+  top: 50px;
+	position: relative;
+	margin-left: 78%;
+}
 /* Fim barra de pesquisa */
-
 
 /*Início Seção das tags */
 #TAGS {
-	position: absolute;
-	top: 200px;
-	left: 430px;
+  margin-left: 15%;
 }
 
 #TAGS p {
-    color: white;
-    font-size: 15px;
-
+  color: white;
+  font-size: 15px;
 }
 
 /*Fim Seção das tags */
