@@ -10,11 +10,11 @@ if(isset($_POST["submit"])){
     $rg = $_POST["rg"];
     $senha = $_POST["senha"];
     $duplicate = mysqli_query($conn,"SELECT * FROM aluno WHERE nome = '$nome' OR rg = '$rg'");
-    if(mysqli_num_rows($duplicate) > 0){
+    /*if(mysqli_num_rows($duplicate) > 0){
         echo
         "<script> alert('Username or rg Has Already Taken'); </script>";
     }
-    else{
+    else{*/
         if($senha == $senha){
             $query = "INSERT INTO aluno VALUES('$nome','$rg','$senha')";
             mysqli_query($conn, $query);
@@ -25,7 +25,7 @@ if(isset($_POST["submit"])){
             echo
             "<script> alert('Password Does Not Match');</script>";
         }
-    }
+    //}
 }
 ?>
 <html>
@@ -121,5 +121,3 @@ if(isset($_POST["submit"])){
 </html>
 
 
-
-?>
