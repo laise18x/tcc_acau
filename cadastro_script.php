@@ -1,7 +1,6 @@
 
 <?php
-include 'configu.php';
-require 'configu.php';
+require 'conexao.php';
 if(!empty($_SESSION["id"])){
     header("Location:index.php");
 }
