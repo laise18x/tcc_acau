@@ -1,0 +1,31 @@
+body {
+	font-family: 'Poppins', sans-serif;
+	background: #26335D;
+}
+
+.textoDenuncia {
+	width: 490px;
+	height: 80px;
+	border-bottom: 1px solid #694ED6;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+.form-check-label, .form-check-input {
+	margin-top: 10px;
+}
+
+.btn-concluir {
+	background-color: #694ED6;
+	border-radius: 8px;
+	color: #fff;
+	font-size: 15px;
+	height: 35px;
+	width: 150px;
+	text-transform: uppercase;
+}
+
+p {
+	margin-top: 10px;
+}
