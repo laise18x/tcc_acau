@@ -88,3 +88,17 @@ body {
   margin-left: 12%;
   margin-right: 12%;
 }
+
+.dropdown-menu {
+  min-width: 65%;
+}
+.dropdown-item {
+  font-family: "Poppins";
+  font-style: normal;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 22px;
+
+  color: #404040;
+}
