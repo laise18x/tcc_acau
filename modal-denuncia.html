@@ -1,92 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Meta tags Obrigatórias -->
+<html>
+<head>
+  <!-- Meta tags Obrigatórias -->
+  <title>ACAU - Modal (Denúncias)</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ACAU - Modal (Denúncias)</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-  <!-- Estilo customizado -->
-  <link rel="stylesheet" type="text/css" href="dicas-de-estudos.css">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  </head>
 
 
-  <body class="home_body">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-   <header><!--Início cabeçalho-->
-      
-      <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Sair</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-        <i class="fa-solid fa-bars"></i>
-        </button>
-        <div
-          class="collapse justify-content-end navbar-collapse"
-          id="navbarSupportedContent"
-        >
-          <ul class="navbar-nav mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Suporte</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Configurações</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="forum.html">Fórum</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="configuracoes.html">Disciplinas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Guia de Carreira</a>
-            </li>
-          </ul>
+  <!--JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!--Bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="modal-denuncia.css">
+  
+</head>
+<body>
+
+<div class="container">
+  <h2 style="color: white;">Modal Denúncia </h2>
+  <!-- Trigger the modal with a button -->
+  <a data-toggle="modal" href="#myModal" style="color: white; text-decoration: none;" >Denunciar</a>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-lock"></span> Denunciar</h4>
         </div>
-      </div>
-    </nav>
+        <div class="modal-body" style="padding:40px 50px;">
 
-    </header><!--Fim cabeçalho-->
-
-
-    <!-- Início Modal -->
-
-    <!-- Botão para acionar modal -->
-    <button type="button" data-toggle="modal" data-target="#meuModal">Abrir modal</button>
-
-    <div class="modal" tabindex="-1" role="dialog" id="meuModal">
-      
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Denúncia</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!--Texto no corpo do modal -->
+          <!--Texto no corpo do modal -->
 
         <p>Informe a razão da denúncia: </p>
-        <input type="text" name="">
+        <input type="text" class="textoDenuncia" id="denuncia" onkeyup="limite_textarea(this.value)">
+        <small><span id="cont">140</span> caracteres restantes</small> <br><br>
 
         <p>A postagem viola: </p>
 
@@ -119,23 +74,60 @@
         </div>
 
 
+
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-concluir">Concluir</button>
+          <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> FECHAR</button>
+          
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Concluir</button>
-      </div>
+      
     </div>
-  </div>
+  </div> 
 </div>
-
-    <!-- Fim Modal -->
-
-
-
-  <script type="text/javascript">
-    $('#meuModal').on('shown.bs.modal', function () {
-    $('#meuInput').trigger('focus')
-  })
+ 
+<script>
+$(document).ready(function(){
+  $("#myBtn").click(function(){
+    $("#myModal").modal();
+  });
+});
 </script>
-  </body>
+
+<script type="text/javascript">
+  
+  /* Início contagem de caracteres no campo de texto */
+
+    //Impede de escrever mais que 140 caracteres
+    var textoDenuncia = document.getElementById("denuncia");
+
+    textoDenuncia.oninput = function() {
+      maxCarac = 140;
+
+      if(textoDenuncia.value.length >= maxCarac) {
+        textoDenuncia.value = textoDenuncia.value.substring(0, maxCarac);
+
+      }
+    }
+
+    //Mostra a quantidade de caracteres restantes
+
+    function limite_textarea(valor) {
+    quant = 140;
+    total = valor.length;
+    if(total <= quant) {
+        resto = quant - total;
+        document.getElementById('cont').innerHTML = resto;
+    } else {
+        document.getElementById('texto').value = valor.substr(0,quant);
+    }
+}
+
+    /* Fim contagem de caracteres no campo de texto */
+
+</script>
+
+</body>
 </html>
