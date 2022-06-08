@@ -9,14 +9,15 @@ function mountReportModalHTML() {
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
-              <h4>Denunciar</h4>
+              <h4 class="modal-title">Denunciar</h4>
+              <button type="button" class="close btn btn-close" data-bs-dismiss="modal"></button>
+              
             </div>
 
             <div class="modal-body" style="padding:40px 50px;">
               <!--Texto no corpo do modal -->
               <p>Informe a razão da denúncia:</p>
-              <input type="text" class="textoDenuncia" id="denuncia">
+              <textarea type="text" class="textoDenuncia form-control" id="denuncia" rows="4"></textarea>
               <small><span id="cont">140</span> caracteres restantes</small>
               
               <br><br>
