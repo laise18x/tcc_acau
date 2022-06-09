@@ -1,0 +1,96 @@
+/*Início-cabeçalho */
+body {
+	font-family: 'Poppins', sans-serif;
+	background: #26335D;
+}
+
+
+h1 {
+	color: #26335D;
+	text-transform: uppercase;
+	position: absolute;
+	top: 370px;
+	left: 550px;
+	font-size: 50px;
+	font-weight: bold;
+	padding-top: 40px;
+}
+
+h3 {
+	color: white;
+	text-transform: uppercase;
+	margin-top: 20px;
+	margin-left: 100px;
+	padding: 5px;
+	font-size: 25px;
+	font-weight: bold;
+	padding-top: 40px;
+}
+
+h4 {
+	color: #694ED6;
+	margin-left: 70px;
+	margin-top: 10px;
+	font-size: 18px;
+}
+
+
+h5 {
+	position: absolute;
+	top: 170px;
+	left: 590px;
+	font-weight: bold;
+}
+
+h6 {
+	font-weight: bold;
+	margin-left: 40px;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+/*Fim-cabeçalho */
+
+img {
+	height: 100px;
+	width: 100px;
+	position: absolute;
+	top: 300px;
+	left: 620px;
+}
+
+i {
+	position: absolute;
+	top: 10px;
+	left: 20px;
+}
+
+hr {
+	width: 1260px;
+	margin-left: 60px;
+}
+
+/*Início container */
+
+#container {
+	background-color: #F5F4F8;
+	position: absolute;
+	height: 500px;
+	width: 100%;
+}
+
+
+button.avaliacao {
+	color: #fff;
+	font-size: 15px;
+	background-color: #694ED6;
+	border: none;
+	border-radius: 5px;
+	height: 40px;
+	width: 260px;
+	position: absolute;
+	top: 60px;
+	right: 30px;
+}
+
+/* Fim container*/
