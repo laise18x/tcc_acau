@@ -90,7 +90,7 @@ function mountPost(post, container){
   const postTemplate = document.createElement("span");
   postTemplate.innerHTML = `
   <div class="row content py-2 my-3">
-    <div class="col-2">
+    <div class="col-2 me-3">
       <p class="author">
       </p>
     </div>
@@ -117,7 +117,8 @@ function mountPost(post, container){
   const card = postTemplate.children.item(0);
   card.querySelector(".author").textContent = movie.director;
   card.querySelector(".title").textContent = movie.title;
-  card.querySelector(".postContent").textContent = `${movie.description}...`;
+  movie.description = movie.description.substring(0, 300);
+  card.querySelector(".postContent").textContent = `${movie.description}..`;
 
   const listItemEdit = document.createElement("li");
   const btnEdit = document.createElement("button");
