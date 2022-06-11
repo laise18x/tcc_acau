@@ -1,0 +1,98 @@
+/*Início-cabeçalho */
+body {
+	font-family: 'Poppins', sans-serif;
+	background: #26335D;
+}
+
+
+h1 {
+	color: #26335D;
+	text-transform: uppercase;
+	margin-left: 435px;
+	margin-top: 10px;
+	font-size: 50px;
+	font-weight: bold;
+	padding-top: 40px;
+}
+
+h4 {
+	color: #694ED6;
+	margin-left: 70px;
+	margin-top: 10px;
+	font-size: 18px;
+}
+
+h4.modal-title {
+	color: black;
+	font-size: 20px;
+}
+
+
+h5 {
+	
+	font-weight: bold;
+	margin-left: 470px;
+}
+
+p {
+	color: black;
+	margin-left: 20px;
+}
+
+label {
+	color: black;
+}
+
+
+/*Fim-cabeçalho */
+
+img {
+	height: 100px;
+	width: 100px;
+	margin-left: 500px;
+	margin-top: 40px;
+}
+
+i {
+	position: absolute;
+	top: 10px;
+	left: 20px;
+}
+
+hr {
+	width: 1050px;
+	margin-left: 40px;
+}
+
+/*Início container */
+
+.form-check {
+	margin-left: 20px;
+}
+
+
+button.avaliacao {
+	color: #fff;
+	font-size: 15px;
+	background-color: #694ED6;
+	border: none;
+	border-radius: 5px;
+	height: 40px;
+	width: 260px;
+	position: absolute;
+	top: 40px;
+	right: 30px;
+}
+
+button.conclusao {
+	color: #fff;
+	font-size: 15px;
+	background-color: #694ED6;
+	border: none;
+	border-radius: 5px;
+	height: 40px;
+	width: 260px;
+}
+
+/* Fim container*/
+
