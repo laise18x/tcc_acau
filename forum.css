@@ -114,7 +114,21 @@ body {
 .fa-plus {
   color: white;
 }
-.input {
+.modalCreatePost{
+  max-width: 70%;
+}
+.headerCreatePost{
+  border-bottom: 0px;
+}
+.postTitle, .createPostContent, .tags{
+  font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 30px;
+
+color: #404040;
+}
+.form-control {
   width: 100%;
   height: auto;
   border-bottom: 1px solid #694ed6;
