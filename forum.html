@@ -64,7 +64,9 @@
                 <a class="nav-link" href="configuracoes.html">Configurações</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Fórum</a>
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Fórum</a
+                >
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="fluxograma.html">Disciplinas</a>
@@ -86,16 +88,16 @@
         <div class="col-3 px-4 lateral">
           <!--Início div lateral -->
           <div class="info sticky-top">
-            <div class="" >
+            <div class="">
               <h4 class="nomeSocial mt-5 pb-3">Nome social</h4>
               <h4 class="cursoNome pb-3">Curso</h4>
               <a class="minhasPostagens pb-4" href="#">Minhas postagens</a>
               <p class="regras pt-4 text-center">Regras</p>
               <ol class="px-3 lh-lg">
+                <li class="pb-4">Não é permitido ferir os direitos humanos.</li>
                 <li class="pb-4">
-                  Não é permitido ferir os direitos humanos.
+                  Não é permitido usar palavras de baixo calão.
                 </li>
-                <li class="pb-4">Não é permitido usar palavras de baixo calão.</li>
                 <li class="pb-4">
                   Não é permitido ofender colegas, professores ou a instituição
                   de ensino.
@@ -109,10 +111,12 @@
         <div class="central col-9">
           <!--Início barra de pesquisa-->
           <form action="">
-            <button type="submit" class="btn-search"><i class="fa-solid fa-magnifying-glass fa-lg"></i></button>
-            <input type="search" class="barra_pesquisa ps-4">
+            <button type="submit" class="btn-search">
+              <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+            </button>
+            <input type="search" class="barra_pesquisa ps-4" />
           </form>
-          
+
           <!--Fim barra de pesquisa-->
           <div id="TAGS">
             <p>
@@ -120,8 +124,57 @@
               #Dúvidas...
             </p>
           </div>
-          <div class="forum" id="postagens">
-            
+          <div class="forum" id="postagens"></div>
+          <div class="position-relative">
+            <!-- Button trigger modal -->
+            <button
+              type="button"
+              class="btn btn-lg createPostBtn"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              <i class="fa-solid fa-lg fa-plus"></i>
+            </button>
+          </div>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Fechar"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <label class="postTitle">Insira o título da sua postagem:</label>
+                  <input class="form-control" type="text" placeholder="Título" aria-label="título da postagem">
+                  <label class="postContent">Insira o conteúdo da sua postagem:</label>
+                  <textarea class="form-control" id="postContent" rows="5"></textarea>
+                  <label class="tags">Tags:</label>
+                  <input class="form-control" type="text" placeholder="Tags">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">Postagem Anônima
+                  </label>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-concluir btn-primary">
+                    Concluir
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
