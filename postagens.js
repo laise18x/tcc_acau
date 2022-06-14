@@ -136,7 +136,38 @@ function mountEditModalHTML(post) {
 
   bootstrapModal.show();
 }
+function mountDeleteModalHTML(){
+  if (!bootstrapModal) {
+    const modalTemplate = document.createElement("span");
+    modalTemplate.innerHTML = `
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Excluir</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h4>Tem certeza de que deseja excluir esse post?</h4>
+              <p>Após a exclusão o post não poderá ser recuperado.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Excluir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `
+    const modal = modalTemplate.children.item(0);
 
+    document.body.appendChild(modal);
+    bootstrapModal = new bootstrap.Modal(modal);
+  }
+
+  bootstrapModal.show();
+}
 function mountPost(post, container) {
   const movie = post;
   const postTemplate = document.createElement("span");
@@ -186,6 +217,10 @@ function mountPost(post, container) {
   btnDelete.setAttribute("class", "dropdown-item");
   btnDelete.setAttribute("type", "button");
   btnDelete.textContent = "Excluir";
+  btnDelete.addEventListener("click", (event) => {
+    event.preventDefault();
+    mountDeleteModalHTML();
+  });
 
   const listItemReport = document.createElement("li");
   const btnReport = document.createElement("button");
