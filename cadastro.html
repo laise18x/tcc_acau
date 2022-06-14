@@ -11,7 +11,8 @@
 	<!-- Estilo customizado -->
 	<link rel="stylesheet" type="text/css" href="cadastro.css">
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!--Font Awesome Icons-->
+  <script src="https://kit.fontawesome.com/c38b27744a.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -22,7 +23,7 @@
 		<h1>Cadastre-se</h1>
 
 		<form action="cadastro_script.php" method="POST" >
-			<?php include_once 'conexao.php';?>>
+			<?php include_once 'conexao.php';?>
 			
 			<div class="div_nome">
 				<i class="fa fa-user icon"></i>
@@ -41,17 +42,6 @@
 
 				<input class="senha" type="password" name="senha" id="psw"
 				placeholder="Senha" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8" required>
-			</div>
-
-			<div class="dropdown">
-			  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			    Instituição de ensino
-			  </button>
-			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			    <a class="dropdown-item" href="#">Instituição 1</a>
-			    <a class="dropdown-item" href="#">Instituição 2</a>
-			    <a class="dropdown-item" href="#">Instituição 3</a>
-			  </div>
 			</div>
 
 			<div>
