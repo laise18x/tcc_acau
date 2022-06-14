@@ -242,8 +242,16 @@ function mountPost(post, container) {
     listItemReport.appendChild(btnReport);
     kebabMenu.appendChild(listItemReport);
   }
-  //const card = card.querySelector(".content");
+
+  const commentSection = document.createElement("div");
+  commentSection.setAttribute("class", "comentarios py-4 px-3 mb-5");
+  const commentSectionName = document.createElement("p");
+  commentSectionName.setAttribute("class", "mb-0")
+  commentSectionName.textContent = "Comentários (0)";
+  commentSection.appendChild(commentSectionName);
+  
   container.appendChild(card);
+  container.appendChild(commentSection);
 }
 
 const app = document.getElementById("postagens");
