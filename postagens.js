@@ -1,5 +1,3 @@
-
-
 let bootstrapModal;
 function mountReportModalHTML() {
   if (!bootstrapModal) {
@@ -64,19 +62,73 @@ function mountReportModalHTML() {
     `;
     const modal = modalTemplate.children.item(0);
 
-    modal.querySelector("#denuncia").addEventListener('input', function(event) {
-      const limite       = 140;
-      const textoAtual   = event.target.value;
-      const tamanhoTexto = textoAtual.length;
+    modal
+      .querySelector("#denuncia")
+      .addEventListener("input", function (event) {
+        const limite = 140;
+        const textoAtual = event.target.value;
+        const tamanhoTexto = textoAtual.length;
 
-      if (tamanhoTexto > limite) {
-        event.target.value = textoAtual.substring(0, limite);
-      }
-      else {
-        const resto = limite - tamanhoTexto;
-        modal.querySelector('#cont').innerHTML = resto;
-      }
-    });
+        if (tamanhoTexto > limite) {
+          event.target.value = textoAtual.substring(0, limite);
+        } else {
+          const resto = limite - tamanhoTexto;
+          modal.querySelector("#cont").innerHTML = resto;
+        }
+      });
+
+    document.body.appendChild(modal);
+    bootstrapModal = new bootstrap.Modal(modal);
+  }
+
+  bootstrapModal.show();
+}
+function mountEditModalHTML(post) {
+  if (!bootstrapModal) {
+    const modalTemplate = document.createElement("span");
+    modalTemplate.innerHTML = `
+        <div class="modal fade show" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modalCreatePost">
+          <div class="modal-content">
+            <div class="modal-header headerCreatePost">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Fechar"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <label class="postTitle">Insira o título da sua postagem:</label>
+              <input class="form-control formTitle" type="text" aria-label="título da postagem">
+              <label class="createPostContent mt-4">Insira o conteúdo da sua postagem:</label>
+              <textarea class="form-control formContent" id="createPostContent" rows="5"></textarea>
+              <label class="tags mt-4">Tags:</label>
+              <input class="form-control formTags" type="text" placeholder="Insira aqui as tags separagas por vírgulas">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">Postagem Anônima
+              </label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-concluir btn-primary">
+                Concluir
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    const modal = modalTemplate.children.item(0);
+    const title = modal.querySelector(".formTitle");
+    title.value = post.title;
+
+    const content = modal.querySelector(".formContent");
+    content.textContent = post.description;
+
+    const tags = modal.querySelector(".formTags");
+    tags.value = post.id;
 
     document.body.appendChild(modal);
     bootstrapModal = new bootstrap.Modal(modal);
@@ -85,7 +137,7 @@ function mountReportModalHTML() {
   bootstrapModal.show();
 }
 
-function mountPost(post, container){
+function mountPost(post, container) {
   const movie = post;
   const postTemplate = document.createElement("span");
   postTemplate.innerHTML = `
@@ -117,14 +169,17 @@ function mountPost(post, container){
   const card = postTemplate.children.item(0);
   card.querySelector(".author").textContent = movie.director;
   card.querySelector(".title").textContent = movie.title;
-  movie.description = movie.description.substring(0, 300);
-  card.querySelector(".postContent").textContent = `${movie.description}..`;
+  card.querySelector(".postContent").textContent = movie.description;
 
   const listItemEdit = document.createElement("li");
   const btnEdit = document.createElement("button");
   btnEdit.setAttribute("class", "dropdown-item");
   btnEdit.setAttribute("type", "button");
   btnEdit.textContent = "Editar";
+  btnEdit.addEventListener("click", (event) => {
+    event.preventDefault();
+    mountEditModalHTML(post);
+  });
 
   const listItemDelete = document.createElement("li");
   const btnDelete = document.createElement("button");
@@ -164,9 +219,7 @@ app.appendChild(container);
 
 fetch("https://ghibliapi.herokuapp.com/films")
   .then((response) => response.json())
-  .then((posts) => posts.forEach(
-    (post) => mountPost(post, container)
-    ))
+  .then((posts) => posts.forEach((post) => mountPost(post, container)))
   .catch((err) => {
     const errorMessage = document.createElement("p");
     errorMessage.textContent = `Essa não! Não está funcionando!`;
