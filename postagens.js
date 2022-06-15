@@ -1,6 +1,7 @@
 import {mountReportModalHTML} from "./reportModal.js";
 import {mountEditModalHTML} from "./editModal.js";
 import {mountDeleteModalHTML} from "./deleteModal.js";
+import {mountCommentsModalHTML} from "./commentsModal.js";
 
 function mountPost(post, container) {
   const movie = post;
@@ -79,9 +80,13 @@ function mountPost(post, container) {
 
   const commentSection = document.createElement("div");
   commentSection.setAttribute("class", "comentarios py-4 px-3 mb-5");
-  const commentSectionName = document.createElement("p");
-  commentSectionName.setAttribute("class", "mb-0")
+  const commentSectionName = document.createElement("button");
+  commentSectionName.setAttribute("class", "mb-0 btnComments")
   commentSectionName.textContent = "Comentários (0)";
+  commentSectionName.addEventListener("click", (event) => {
+    event.preventDefault();
+    mountCommentsModalHTML(post);
+  });
   commentSection.appendChild(commentSectionName);
   
   container.appendChild(card);

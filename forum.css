@@ -108,7 +108,10 @@ body {
   margin-left: 12%;
   margin-right: 12%;
 }
-
+.btnComments{
+  border: 0px;
+  background-color: white;
+}
 .createPostBtn {
   background-color: #694ed6;
   position: fixed;
