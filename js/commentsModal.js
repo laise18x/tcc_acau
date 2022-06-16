@@ -17,13 +17,14 @@ function displayComments(commentsContainer){
   commentsContainer.appendChild(comments);
 }
 
-let bootstrapModal;
+let bootstrapModalComments;
 export function mountCommentsModalHTML(post) {
-  if (!bootstrapModal) {
+  const id = post.id;
+  if (!bootstrapModalComments) {
     const modalTemplate = document.createElement("span");
     modalTemplate.innerHTML = `
       <div
-      class="modal fade show" id="myModal" role="dialog"
+      class="modal fade show" id="${id}" role="dialog"
       >
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -95,7 +96,7 @@ export function mountCommentsModalHTML(post) {
     displayComments(commentsContainer);
 
     document.body.appendChild(modalComments);
-    bootstrapModal = new bootstrap.Modal(modalComments);
+    bootstrapModalComments = new bootstrap.Modal(modalComments);
   }
-  bootstrapModal.show();
+  bootstrapModalComments.show();
 }

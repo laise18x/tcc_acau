@@ -39,7 +39,7 @@ export const generateModal = (modalId) => {
               <hr>
               <h5 class="dicasEstudo">Dicas de Estudo</h5>
 
-              <img src="imagens/em-breve.png" class="imgBreve mx-auto d-block" />
+              <img src="../imagens/em-breve.png" class="imgBreve mx-auto d-block" />
 
               <h3 class="breve d-flex justify-content-center">Em breve!</h3>
             </div>

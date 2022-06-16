@@ -81,7 +81,8 @@ function mountPost(post, container) {
   const commentSection = document.createElement("div");
   commentSection.setAttribute("class", "comentarios py-4 px-3 mb-5");
   const commentSectionName = document.createElement("button");
-  commentSectionName.setAttribute("class", "mb-0 btnComments")
+  commentSectionName.setAttribute("class", "mb-0 btnComments");
+  commentSectionName.setAttribute("data-bs-target", "#"+post.id);
   commentSectionName.textContent = "Comentários (0)";
   commentSectionName.addEventListener("click", (event) => {
     event.preventDefault();

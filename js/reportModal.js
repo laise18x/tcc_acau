@@ -4,7 +4,7 @@ export function mountReportModalHTML() {
     const modalTemplate = document.createElement("span");
     modalTemplate.innerHTML = `
       <div class="modal fade show" id="myModal" role="dialog">
-        <link rel="stylesheet" type="text/css" href="modal-denuncia.css" />
+        <link rel="stylesheet" type="text/css" href="css/modal-denuncia.css" />
         <div class="modal-dialog">
           <!-- Modal content-->
           <div class="modal-content">

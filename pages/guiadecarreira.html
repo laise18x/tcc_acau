@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -19,21 +18,30 @@
       rel="stylesheet"
     />
     <!--Font Awesome Icons-->
-    <script src="https://kit.fontawesome.com/c38b27744a.js" crossorigin="anonymous"></script>
-    <!--Folha de Estilos-->
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="home.css">
-    <!--Arquivo Javascript-->
-    <script src="contador.js"></script>
-    <title>ACAU</title>
+    <script
+      src="https://kit.fontawesome.com/c38b27744a.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/guiadecarreira.css" />
+    <title>Guia de Carreira</title>
   </head>
-  <body class="home_body">
+  <body class="guia_body">
     <!--navbar-->
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand" href="login.html">Sair</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fa-solid fa-bars"></i>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+        <i class="fa-solid fa-bars"></i>
         </button>
         <div
           class="collapse justify-content-end navbar-collapse"
@@ -41,7 +49,7 @@
         >
           <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page"  href="#">Home</a>
+              <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="suporte.html">Suporte</a>
@@ -56,39 +64,18 @@
               <a class="nav-link" href="fluxograma.html">Disciplinas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="guiadecarreira.html">Guia de Carreira</a>
+              <a class="nav-link active" aria-current="page" href="#">Guia de Carreira</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
     <!--navbar end-->
-    <div class="container-fluid ps-0 pe-0">
-      <div class="row gx-0">
-        <div class="col px-0 themed-grid-col">
-          <img src="assets/ACAU_home.png" class="img-fluid" alt="ACAU">
-          <div class="contador">
-            <p class="mb-0">
-              <button class="btn btnContador collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCounter" aria-expanded="false" aria-controls="collapseCounter">
-                
-              </button>
-            </p>
-            <div class="collapse collapseContador" id="collapseCounter">
-              <div class="card text-center card-body" id="contador">
-                
-              </div>
-            </div>
-            <div class="subtituloContador">
-              <p>Contador para o fim do semestre</p>
-            </div>
-          </div>
-        </div> 
-        <div class="col px-0 themed-grid-col">
-          <img src="assets/booktower.png" class="img-fluid" alt="ACAU">
-        </div>
-      </div>
+
+    <div class="container-sm mw-100 background">
+      <iframe style="border:none" width="100%" height="650" src="https://whimsical.com/embed/N2cMB5fuj5oGBDe8EzL8f6"></iframe>
     </div>
-    
+
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
       integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
