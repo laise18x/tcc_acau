@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Jun-2022 às 21:45
+-- Tempo de geração: 16-Jun-2022 às 21:50
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -31,10 +31,17 @@ CREATE TABLE `aluno` (
   `idaluno` int(11) NOT NULL,
   `rg` varchar(16) NOT NULL,
   `senha` varchar(22) NOT NULL,
-  `nome_social` varchar(45) NOT NULL,
-  `sta` varchar(20) NOT NULL DEFAULT 'online',
+  `nome` varchar(45) NOT NULL,
+  `sta` varchar(20) DEFAULT 'online',
   `carg_al` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `aluno`
+--
+
+INSERT INTO `aluno` (`idaluno`, `rg`, `senha`, `nome`, `sta`, `carg_al`) VALUES
+(1485663, '7878878', '786786a@er', 'Ana', 'online', 'none');
 
 -- --------------------------------------------------------
 
@@ -228,7 +235,7 @@ ALTER TABLE `relatorio`
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `idaluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1485663;
+  MODIFY `idaluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1485664;
 
 --
 -- AUTO_INCREMENT de tabela `disciplina`
