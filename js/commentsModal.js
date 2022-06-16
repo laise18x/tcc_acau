@@ -20,83 +20,83 @@ function displayComments(commentsContainer){
 let bootstrapModalComments;
 export function mountCommentsModalHTML(post) {
   const id = post.id;
-  if (!bootstrapModalComments) {
-    const modalTemplate = document.createElement("span");
-    modalTemplate.innerHTML = `
-      <div
-      class="modal fade show" id="${id}" role="dialog"
-      >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title postTitle title" id="modalComentarios"></h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Fechar"
-            ></button>
+  
+  const modalTemplate = document.createElement("span");
+  modalTemplate.innerHTML = `
+    <div
+    class="modal fade show" id="${id}" role="dialog"
+    >
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title postTitle title" id="modalComentarios"></h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Fechar"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="row content py-2 mx-0 my-3">
+            <div class="col-2 me-3">
+              <p class="author"></p>
+            </div>
+            <div class="col position-relative">
+              <p class="postContent"></p>
+            </div>
           </div>
-          <div class="modal-body">
-            <div class="row content py-2 mx-0 my-3">
-              <div class="col-2 me-3">
-                <p class="author"></p>
-              </div>
-              <div class="col position-relative">
-                <p class="postContent"></p>
+          <div class="row">
+            <div class="col-9 form-floating">
+              <textarea
+                class="form-control"
+                id="floatingTextarea"
+                id="message-text"
+                rows="3"
+              ></textarea>
+              <label for="floatingTextarea">Comentário</label>
+            </div>
+            <div class="col align-self-end w-100 mx-0 px-2">
+              <div class="form-check">
+                <input
+                  class="form-check-input checkboxAnonimo"
+                  type="checkbox"
+                  value=""
+                  id="flexCheckDefault"
+                />
+                <label class="form-check-label pb-3" for="flexCheckDefault"
+                  >Comentário Anônimo
+                </label>
+                <button type="button" class="btn btn-sm btn-enviar">
+                  Enviar comentário
+                </button>
               </div>
             </div>
-            <div class="row">
-              <div class="col-9 form-floating">
-                <textarea
-                  class="form-control"
-                  id="floatingTextarea"
-                  id="message-text"
-                  rows="3"
-                ></textarea>
-                <label for="floatingTextarea">Comentário</label>
-              </div>
-              <div class="col align-self-end w-100 mx-0 px-2">
-                <div class="form-check">
-                  <input
-                    class="form-check-input checkboxAnonimo"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckDefault"
-                  />
-                  <label class="form-check-label pb-3" for="flexCheckDefault"
-                    >Comentário Anônimo
-                  </label>
-                  <button type="button" class="btn btn-sm btn-enviar">
-                    Enviar comentário
-                  </button>
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div class="comments"></div>
           </div>
-          <div class="modal-footer">
-            <a clas="topoAnchor" href="#modalComentarios">Topo</a>
-          </div>
+          <hr />
+          <div class="comments"></div>
+        </div>
+        <div class="modal-footer">
+          <a clas="topoAnchor" href="#modalComentarios">Topo</a>
         </div>
       </div>
     </div>
-    `;
-    const modalComments = modalTemplate.children.item(0);
-    const title = modalComments.querySelector(".title");
-    title.textContent = post.title;
+  </div>
+  `;
+  const modalComments = modalTemplate.children.item(0);
+  const title = modalComments.querySelector(".title");
+  title.textContent = post.title;
 
-    const content = modalComments.querySelector(".postContent");
-    content.textContent = post.description;
+  const content = modalComments.querySelector(".postContent");
+  content.textContent = post.description;
 
-    const author = modalComments.querySelector(".author");
-    author.textContent = post.director;
-    const commentsContainer = modalComments.querySelector(".comments");
-    displayComments(commentsContainer);
+  const author = modalComments.querySelector(".author");
+  author.textContent = post.director;
+  const commentsContainer = modalComments.querySelector(".comments");
+  displayComments(commentsContainer);
 
-    document.body.appendChild(modalComments);
-    bootstrapModalComments = new bootstrap.Modal(modalComments);
-  }
+  document.body.appendChild(modalComments);
+  bootstrapModalComments = new bootstrap.Modal(modalComments);
+  
   bootstrapModalComments.show();
 }
