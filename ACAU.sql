@@ -1,161 +1,292 @@
-CREATE DATABASE  IF NOT EXISTS `acau` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `acau`;
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Tempo de geração: 16-Jun-2022 às 19:49
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
-DROP TABLE IF EXISTS `aluno`;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+--Essa é uma exportação do Banco.
+-- Banco de dados: `acau`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `aluno`
+--
+CREATE DATABASE IF NOT EXISTS acau;
+USE acau;
+
 CREATE TABLE `aluno` (
-  `id_aluno` int NOT NULL AUTO_INCREMENT,
-  `rg` int DEFAULT NULL,
+  `idaluno` int(11) NOT NULL,
+  `rg` varchar(16) NOT NULL,
+  `senha` varchar(22) NOT NULL,
   `nome_social` varchar(45) NOT NULL,
-  `senha` varchar(10) NOT NULL,
-  `status` varchar(25) NOT NULL,
-  PRIMARY KEY (`id_aluno`),
-  UNIQUE KEY `id_aluno` (`id_aluno`),
-  UNIQUE KEY `rg` (`rg`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+  `sta` varchar(20) NOT NULL DEFAULT 'online',
+  `carg_al` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `aluno_aluno`;
-CREATE TABLE `aluno_aluno` (
-  `id_aluno` int NOT NULL,
-  UNIQUE KEY `id_aluno` (`id_aluno`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `aluno_forum`;
+--
+-- Estrutura da tabela `aluno_forum`
+--
+
 CREATE TABLE `aluno_forum` (
   `topico` varchar(20) NOT NULL,
-  `id_aluno` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+  `idaluno` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `aluno_professor`;
-CREATE TABLE `aluno_professor` (
-  `id_aluno` int NOT NULL,
-  `id_professor` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `categoria`;
-CREATE TABLE `categoria` (
-  `id_categoria` int NOT NULL AUTO_INCREMENT,
-  `nome_categ` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id_categoria`),
-  UNIQUE KEY `id_categoria` (`id_categoria`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+--
+-- Estrutura da tabela `aluno_p`
+--
 
-DROP TABLE IF EXISTS `categoria_forum`;
-CREATE TABLE `categoria_forum` (
-  `topico` varchar(20) NOT NULL,
-  `id_categoria` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `aluno_p` (
+  `idaluno` int(11) NOT NULL,
+  `id_prof` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `denuncia`;
-CREATE TABLE `denuncia` (
-  `id_denuncia` int NOT NULL AUTO_INCREMENT,
-  `autor_denun` varchar(20) DEFAULT NULL,
-  `dia_denun` date DEFAULT NULL,
-  `hora_denun` datetime DEFAULT NULL,
-  `justificativa` varchar(500) NOT NULL,
-  `postagem` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_denuncia`),
-  UNIQUE KEY `id_denuncia` (`id_denuncia`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `disciplina`;
+--
+-- Estrutura da tabela `disciplina`
+--
+
 CREATE TABLE `disciplina` (
-  `id_disciplina` int NOT NULL AUTO_INCREMENT,
-  `nome_disciplina` varchar(45) NOT NULL,
-  `nota_disciplina` varchar(45) NOT NULL,
-  PRIMARY KEY (`id_disciplina`),
-  UNIQUE KEY `id_disciplina` (`id_disciplina`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+  `id_disc` int(11) NOT NULL,
+  `nome_disc` varchar(45) DEFAULT NULL,
+  `nota_disc` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `forum`;
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `forum`
+--
+
 CREATE TABLE `forum` (
   `topico` varchar(20) NOT NULL,
-  `tipos_de_forum` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`topico`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+  `tforum` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `instituicao`;
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `instituicao`
+--
+
 CREATE TABLE `instituicao` (
-  `id_instituicao` int NOT NULL AUTO_INCREMENT,
-  `telefone` int NOT NULL,
-  `endereco` varchar(45) NOT NULL,
-  `nome_instituicao` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `cursus` varchar(45) NOT NULL,
-  PRIMARY KEY (`id_instituicao`),
-  UNIQUE KEY `id_instituicao` (`id_instituicao`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+  `id_instituicao` int(11) NOT NULL,
+  `nome_ins` varchar(45) DEFAULT NULL,
+  `endereco` varchar(45) DEFAULT NULL,
+  `tel` varchar(13) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `instituicao_disciplina`;
-CREATE TABLE `instituicao_disciplina` (
-  `id_instituicao` int NOT NULL,
-  `id_disciplina` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `p_banidas`;
-CREATE TABLE `p_banidas` (
-  `id_banidas` int NOT NULL AUTO_INCREMENT,
-  `nome_p_bani` varchar(20) DEFAULT NULL,
-  `quantidade` int DEFAULT NULL,
-  PRIMARY KEY (`id_banidas`),
-  UNIQUE KEY `id_banidas` (`id_banidas`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+--
+-- Estrutura da tabela `palavras_banidas`
+--
 
-DROP TABLE IF EXISTS `palavras_banidas`;
 CREATE TABLE `palavras_banidas` (
-  `id_PalavrasBanidas` int NOT NULL,
-  `nome_Pbanidas` varchar(25) NOT NULL,
-  PRIMARY KEY (`id_PalavrasBanidas`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `id_PalavrasBanidas` int(11) NOT NULL,
+  `nome_Pbanidas` varchar(200) DEFAULT NULL,
+  `Nome_correto` varchar(200) DEFAULT '------'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='armazena filtros de palavras';
 
-DROP TABLE IF EXISTS `postagem`;
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `postagem`
+--
+
 CREATE TABLE `postagem` (
-  `id_postagem` int NOT NULL AUTO_INCREMENT,
-  `tipo_forum` varchar(20) DEFAULT NULL,
-  `dia` date DEFAULT NULL,
-  `hora` datetime DEFAULT NULL,
-  `autor` varchar(20) DEFAULT NULL,
-  `anonimato` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id_postagem`),
-  UNIQUE KEY `id_postagem` (`id_postagem`),
-  UNIQUE KEY `tipo_forum` (`tipo_forum`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+  `id_post` int(11) NOT NULL,
+  `dia` date NOT NULL,
+  `autor` varchar(20) NOT NULL,
+  `tforum` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `postagem_denuncia`;
-CREATE TABLE `postagem_denuncia` (
-  `tipo_forum` varchar(20) NOT NULL,
-  `id_postagem` int NOT NULL,
-  `id_denuncia` int DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `postagem_p_banidas`;
-CREATE TABLE `postagem_p_banidas` (
-  `tipo_forum` varchar(20) DEFAULT NULL,
-  `id_postagem` int NOT NULL,
-  `id_banidas` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+--
+-- Estrutura da tabela `professor`
+--
 
-DROP TABLE IF EXISTS `professor`;
 CREATE TABLE `professor` (
-  `id_professor` varchar(45) NOT NULL,
-  `nome_prof` varchar(45) NOT NULL,
-  `nota_prof` int DEFAULT NULL,
-  `instituicao_prof` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_professor`),
-  UNIQUE KEY `in_professor` (`id_professor`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+  `id_prof` int(11) NOT NULL,
+  `nome_p` varchar(45) DEFAULT NULL,
+  `nota_p` varchar(45) DEFAULT NULL,
+  `id_instituicao` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-DROP TABLE IF EXISTS `professor_disciplina`;
-CREATE TABLE `professor_disciplina` (
-  `id_professor` int NOT NULL,
-  `id_disciplina` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `relatorio`;
+--
+-- Estrutura da tabela `relatorio`
+--
+
 CREATE TABLE `relatorio` (
-  `id_relatorio` int NOT NULL AUTO_INCREMENT,
-  `data_emissao` date DEFAULT NULL,
+  `id_rel` int(11) NOT NULL,
+  `data_em` date DEFAULT NULL,
   `hora_emissao` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_relatorio`),
-  UNIQUE KEY `id_relatorio` (`id_relatorio`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3;
+  `id_prof` int(11) DEFAULT NULL,
+  `id_disc` int(11) DEFAULT NULL,
+  `id_aluno` varchar(20) DEFAULT NULL,
+  `idaluno` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices para tabela `aluno`
+--
+ALTER TABLE `aluno`
+  ADD PRIMARY KEY (`idaluno`),
+  ADD UNIQUE KEY `rg` (`rg`);
+
+--
+-- Índices para tabela `aluno_forum`
+--
+ALTER TABLE `aluno_forum`
+  ADD KEY `fk_a` (`idaluno`),
+  ADD KEY `fk_topico` (`topico`);
+
+--
+-- Índices para tabela `disciplina`
+--
+ALTER TABLE `disciplina`
+  ADD PRIMARY KEY (`id_disc`),
+  ADD UNIQUE KEY `id_disc` (`id_disc`);
+
+--
+-- Índices para tabela `forum`
+--
+ALTER TABLE `forum`
+  ADD PRIMARY KEY (`topico`),
+  ADD KEY `tforum` (`tforum`);
+
+--
+-- Índices para tabela `instituicao`
+--
+ALTER TABLE `instituicao`
+  ADD PRIMARY KEY (`id_instituicao`),
+  ADD UNIQUE KEY `id_instituicao` (`id_instituicao`);
+
+--
+-- Índices para tabela `palavras_banidas`
+--
+ALTER TABLE `palavras_banidas`
+  ADD PRIMARY KEY (`id_PalavrasBanidas`),
+  ADD UNIQUE KEY `nome_Pbanidas` (`nome_Pbanidas`);
+
+--
+-- Índices para tabela `postagem`
+--
+ALTER TABLE `postagem`
+  ADD PRIMARY KEY (`id_post`),
+  ADD UNIQUE KEY `id_post` (`id_post`),
+  ADD KEY `fk_forum` (`tforum`);
+
+--
+-- Índices para tabela `professor`
+--
+ALTER TABLE `professor`
+  ADD PRIMARY KEY (`id_prof`),
+  ADD UNIQUE KEY `id_prof` (`id_prof`),
+  ADD KEY `fk_insti` (`id_instituicao`);
+
+--
+-- Índices para tabela `relatorio`
+--
+ALTER TABLE `relatorio`
+  ADD PRIMARY KEY (`id_rel`),
+  ADD KEY `fk_prof` (`id_prof`),
+  ADD KEY `fk_disc` (`id_disc`),
+  ADD KEY `fk_a` (`idaluno`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `aluno`
+--
+ALTER TABLE `aluno`
+  MODIFY `idaluno` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `disciplina`
+--
+ALTER TABLE `disciplina`
+  MODIFY `id_disc` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `instituicao`
+--
+ALTER TABLE `instituicao`
+  MODIFY `id_instituicao` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `palavras_banidas`
+--
+ALTER TABLE `palavras_banidas`
+  MODIFY `id_PalavrasBanidas` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `postagem`
+--
+ALTER TABLE `postagem`
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `professor`
+--
+ALTER TABLE `professor`
+  MODIFY `id_prof` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `relatorio`
+--
+ALTER TABLE `relatorio`
+  MODIFY `id_rel` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `aluno_forum`
+--
+ALTER TABLE `aluno_forum`
+  ADD CONSTRAINT `fk_a` FOREIGN KEY (`idaluno`) REFERENCES `aluno` (`idaluno`),
+  ADD CONSTRAINT `fk_topico` FOREIGN KEY (`topico`) REFERENCES `forum` (`topico`);
+
+--
+-- Limitadores para a tabela `postagem`
+--
+ALTER TABLE `postagem`
+  ADD CONSTRAINT `fk_forum` FOREIGN KEY (`tforum`) REFERENCES `forum` (`tforum`);
+
+--
+-- Limitadores para a tabela `professor`
+--
+ALTER TABLE `professor`
+  ADD CONSTRAINT `fk_insti` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`id_instituicao`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
