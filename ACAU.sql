@@ -25,7 +25,7 @@ CREATE DATABASE IF NOT EXISTS acau;
 USE acau;
 
 CREATE TABLE `aluno` (
-  `idaluno` int(11) NOT NULL,
+  `idaluno` int(11) UNSIGNED NOT NULL,
   `rg` varchar(16) NOT NULL,
   `senha` varchar(22) NOT NULL,
   `nome_social` varchar(45) NOT NULL,
