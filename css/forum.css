@@ -15,6 +15,9 @@ body {
 
   color: #404040;
 }
+a {
+  text-decoration: none;
+}
 .regras {
   font-style: normal;
   font-weight: 700;
