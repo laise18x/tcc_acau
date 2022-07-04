@@ -124,7 +124,10 @@ CREATE TABLE `postagem` (
   `id_post` int(11) NOT NULL,
   `dia` date NOT NULL,
   `autor` varchar(20) NOT NULL,
-  `tforum` varchar(20) NOT NULL
+  `tforum` varchar(20) NOT NULL,
+  'post' varchar(240) NOT NULL,
+  'tag' varchar(45) NOT NULL,
+ 'titulo' varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
