@@ -161,7 +161,17 @@ if(isset($_POST) & !empty($_POST)){
 		$fmsg = "Não foi possivel modificar o comentario";
 	}
 }
-
+<a href="deleta.php?id=<?php echo $r['idpost']; ?>">Del</a>
+if(isset($_GET['idpost']) & !empty($_GET['idpost'])){
+	$idpost = $_GET['idpost'];
+ 
+	$delsql="DELETE FROM `postagem` WHERE idpost=$idpost";
+	if(mysqli_query($conn, $delsql)){
+		header("Location: visualiza.php");
+	}
+}else{
+	header('location: visualiza.php');
+}
        ?>
             </div>
           </div>
