@@ -158,7 +158,7 @@ $res = mysqli_query($conn, $sql);
 		<td><?php echo $r['curso']; ?></td> 
 		<td><?php echo $r['post']; ?></td> 
 		<td><?php echo $r['dia']; ?></td> 
-		<td><a href="editcoment.php?id=<?php echo $r['id']; ?>">Editar</a> <a href="delcomment.php?id=<?php echo $r['id']; ?>">Deletar</a></td> 
+		<td><a href="edita.php?id=<?php echo $r['id']; ?>">Editar</a> <a href="deleta.php?id=<?php echo $r['id']; ?>">Deletar</a></td> 
 	</tr> 
 <?php } ?>
             </div>
