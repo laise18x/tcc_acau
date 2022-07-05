@@ -1,5 +1,6 @@
 <?php
 
+
 $servername = "localhost";
 $database = "acau";
 $username = "root";
@@ -7,11 +8,11 @@ $password = "";
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
 // Check connection
+ mysqli_set_charset($conn, 'utf8');
 if (!$conn) {
-    die("Falha na conexao: " .mysqli_connect_error());
+    die("Falha na conexao: " . mysqli_connect_error());
 }else{
-echo "Conectou com sucesso";
+echo "";
 }
-
 
 ?>
