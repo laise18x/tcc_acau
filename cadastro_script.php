@@ -24,28 +24,30 @@
 
     <?php
       include_once("conexao.php");
+
+			function alert($msg) {
+				echo "<script type='text/javascript'>alert('$msg');</script>";
+			}
+
       $nome = $_POST['nome'];
       $rg = $_POST['rg'];
       $senha = $_POST['senha'];
-$options = array("cost"=>4);
+			$options = array("cost"=>4);
       //echo "$nome_usuario - $email_usuario";
-$hashPassword = password_hash($senha,PASSWORD_BCRYPT,$options);
+			$hashPassword = password_hash($senha,PASSWORD_BCRYPT,$options);
       $result_q = "INSERT INTO aluno(nome, rg, senha) VALUES ('$nome','$rg','$hashPassword')";
       $resultado_usuario = mysqli_query($conn, $result_q);
-alert("Seu id é: " .$idaluno);
+
       if(mysqli_affected_rows($conn) != 0){
 
+				alert("Seu id é: " .$idaluno);
 
-function alert($msg) {
-    echo "<script type='text/javascript'>alert('$msg');</script>";
-}
+				header("Location: ./pages/login.html");
 
-							header("Location:login.html");
-
-                  "";
-              }else{
-echo "num deu";
-									}
+				"";
+				}else{
+				echo "num deu";
+				}
 
 
   ?>

@@ -22,9 +22,9 @@
 
   <?php
 
-	if(isset($_POST['enviar']))
+	if(isset($_POST['id']) && isset($_POST['senha']))
 {
-    $idaluno=$_POST['idaluno'];
+    $idaluno=$_POST['id'];
     $senha=$_POST['senha'];
 
     $check_user="select * from aluno WHERE idaluno='$idaluno'AND senha='$senha'";

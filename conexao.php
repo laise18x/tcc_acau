@@ -2,9 +2,9 @@
 
 
 $servername = "localhost";
-$database = "acau";
-$username = "root";
-$password = "";
+$database = "u727039026_ACAU_BD";
+$username = "u727039026_adm";
+$password = "q?8QX89R";
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
 // Check connection
