@@ -58,29 +58,25 @@
   
   require('conexao.php');
 
-	if(isset($_POST['enviar']))
-{
-    $idaluno=$_POST['idaluno'];
+	if(isset($_POST['id']) && isset($_POST['senha'])){
+    $idaluno=$_POST['id'];
     $senha=$_POST['senha'];
+    
+    $check_user= ("SELECT * from aluno WHERE '{$idaluno}' = idaluno");
+    
+    $run=mysqli_query($conn,$check_user);
+    $checkPassword = mysqli_fetch_object($run)->senha;
 
-    $check_user="select * from aluno WHERE idaluno='$idaluno'AND senha='$senha'";
-
-    $run=mysqli_query($dbcon,$check_user);
-
-		if(mysql_num_rows ($check_user) > 0 )
-{
-$_SESSION['idaluno'] = $idaluno;
-$_SESSION['senha'] = $senha;
-header("Location: https://acau.online/pages/login.html");
-die();
-}
-else{
-  unset ($_SESSION['idaluno']);
-  unset ($_SESSION['senha']);
-  header("Location: cadastro.html");
-die();
+		if($checkPassword && password_verify($senha, $checkPassword)){
+    $_SESSION['idaluno'] = $idaluno;
+    header("Location: https://acau.online/pages/index.html");
+    die();
+    } else{
+        unset ($_SESSION['idaluno']);
+        header("Location: pages/cadastro.html");
+      die();
+      }
   }
-}
 
 
       ?>

@@ -237,8 +237,8 @@ ALTER TABLE `relatorio`
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `idaluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1485664;
-
+  MODIFY `idaluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1485664,
+  MODIFY `senha` varchar(60);
 --
 -- AUTO_INCREMENT de tabela `disciplina`
 --
