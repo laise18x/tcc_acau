@@ -24,7 +24,7 @@
 
     <?php
       include_once("conexao.php");
-
+			
 			function alert($msg) {
 				echo "<script type='text/javascript'>alert('$msg');</script>";
 			}
@@ -33,18 +33,24 @@
       $rg = $_POST['rg'];
       $senha = $_POST['senha'];
 			$options = array("cost"=>4);
-      //echo "$nome_usuario - $email_usuario";
 			$hashPassword = password_hash($senha,PASSWORD_BCRYPT,$options);
       $result_q = "INSERT INTO aluno(nome, rg, senha) VALUES ('$nome','$rg','$hashPassword')";
       $resultado_usuario = mysqli_query($conn, $result_q);
 
-      if(mysqli_affected_rows($conn) != 0){
+			//$result_id = ("SELECT idaluno FROM aluno WHERE $rg ='rg'");
+			function resultId($rg, $conn){
+				$query = ("SELECT idaluno FROM aluno WHERE $rg ='rg'");
+				$data = mysqli_query($conn, $query);
+				return mysqli_result($data, 0);
+			}
 
-				alert("Seu id é: " .$idaluno);
+			printf("%s", resultId($rg, $conn));
+
+      if(mysqli_affected_rows($conn) != 0){
+				
+				alert("Seu id é: " .$row);
 
 				header("Location: ./pages/login.html");
-
-				"";
 				}else{
 				echo "num deu";
 				}

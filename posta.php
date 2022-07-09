@@ -93,7 +93,7 @@
           <div class="info sticky-top">
             <div class="">
               <h4 class="nomeSocial mt-5 pb-3">Nome social</h4>
-              <h4 class="cursoNome pb-3">Curso</h4>
+              <h4 class="cursoNome pb-3">Desenvolvimento de Sistemas</h4>
               <a class="minhasPostagens pb-4" href="#">Minhas postagens</a>
               <p class="regras pt-4 text-center">Regras</p>
               <ol class="px-3 lh-lg">
@@ -126,41 +126,106 @@
           </div>
 
           <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modalCreatePost">
+              <div class="modal-content">
+                <div class="modal-header headerCreatePost">
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Fechar"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <label class="postTitle"
+                    >Insira o título da sua postagem:</label
+                  >
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Título"
+                    aria-label="título da postagem"
+                    value=titulo
+                    
+            
+                  />
+                  <label class="createPostContent mt-4"
+                    >Insira o conteúdo da sua postagem:</label
+                  >
+            
+                  <textarea
+                    class="form-control"
+                    id="createPostContent"
+                    rows="5"
+                  ></textarea>
+                  <label class="tags mt-4">Tags:</label>
+                  <input class="form-control" type="text" placeholder="Tags" />
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="flexCheckDefault"
+                    />
+                    <label class="form-check-label" for="flexCheckDefault"
+                      >Postagem Anônima
+                    </label>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                <a href="post.php"> </a><button type="button" class="btn btn-concluir">
+                    Concluir
+                  </button>
+                  
+                 
          <?php
-require('conexao.php')
-if(isset($_POST) & !empty($_POST)){
-	$titulo = mysqli_real_escape_string($conn, $_POST['titulo']);
-	$post = mysqli_real_escape_string($conn, $_POST['post']);
-	$tag = mysqli_real_escape_string($conn, $_POST['tag']);
- 
-	$isql = "INSERT INTO `postagem`( `titulo`, `post`, `tag`) VALUES ('$titulo','$post','$tag')";
-	$ires = mysqli_query($conn, $isql) or die(mysqli_error($conn));
-	if($ires){
-		$smsg = "Post feito";
-	}else{
-		$fmsg = "Falhou";
-	}
- 
-}
-          $sql = "SELECT * FROM post";
-$res = mysqli_query($conn, $sql);
-
-          
-          <?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
-<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
-          ?>
-          
-          
-	while ( $r = mysqli_fetch_assoc($res)) {
-?>
-	<tr> 
-		<th scope="row"><?php echo $r['nome']; ?></th> 
-		<td><?php echo $r['curso']; ?></td> 
-		<td><?php echo $r['post']; ?></td> 
-		<td><?php echo $r['dia']; ?></td> 
-		<td><a href="edita.php?idpost=<?php echo $r['idpost']; ?>">Editar</a> <a href="deleta.php?idpost=<?php echo $r['idpost']; ?>">Deletar</a></td> 
-	</tr> 
-<?php } ?>
+         
+         include("conexao.php");
+         include("filtro.php");
+         
+         $seleciona= mysqli_query("SELECT * FROM post ORDER BY idpost DESC");
+         $idaluno=mysqli_num_rows($seleciona);
+         
+         if(idaluno<=0){
+             
+             alert("Nenhuma postagem foi criada por você ainda. Comece já");
+         }else{
+             while($row=mysqli_fetch_array($seleciona)){
+               
+                $idpost=$row[idpost];
+                      $titulo=$row[titulo];
+                        $post=$row[post];
+                          $tag=$row[tag];
+                            $dia=$row[dia];
+                              $nome=$row[nome];
+                             
+                              $sql= "SELECT * FROM postagem WHERE nome=$nome";
+                              $query=mysqli_query($sql);
+                              $linha=mysqli_fetch_assoc($query);
+                 
+             }
+         }
+         
+         
+         
+         ?>
+   <div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><?php echo $titulo ?></h5>
+    <?php if($post!=null){?><p class="card-text"><?php echo $post; }?></p>
+   <?php if($tag!=null){?> <h4 class="card-text"><?php echo $tag; }?></h4>
+   <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Postado em: <?php echo $data?></p>
+    
+  </div>
+</div>
+              </div>
             </div>
           </div>
         </div>
