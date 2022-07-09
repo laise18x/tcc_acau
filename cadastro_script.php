@@ -26,7 +26,13 @@
       include_once("conexao.php");
 			
 			function alert($msg) {
-				echo "<script type='text/javascript'>alert('$msg');</script>";
+				echo "
+				<script type='text/javascript'>
+				alert('$msg');
+				window.location = 'index.php';
+				</script>
+				";
+				
 			}
 
       $nome = $_POST['nome'];
@@ -52,11 +58,9 @@
 
       if(mysqli_affected_rows($conn) != 0){
 				
-				alert("Seu id é: " .$row);
-
-				header("Location: index.php");
+				alert("Seu id é: " .$id);
 				}else{
-				echo "num deu";
+				echo "Aconteceu um erro ao cadastrar";
 				}
 
 
