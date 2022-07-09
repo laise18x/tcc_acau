@@ -32,25 +32,29 @@
       $nome = $_POST['nome'];
       $rg = $_POST['rg'];
       $senha = $_POST['senha'];
+
+			$id = substr($rg,0,5)."unaba";
+
 			$options = array("cost"=>4);
 			$hashPassword = password_hash($senha,PASSWORD_BCRYPT,$options);
-      $result_q = "INSERT INTO aluno(nome, rg, senha) VALUES ('$nome','$rg','$hashPassword')";
+      $result_q = "INSERT INTO aluno(idaluno, nome, rg, senha) VALUES ('$id','$nome','$rg','$hashPassword')";
       $resultado_usuario = mysqli_query($conn, $result_q);
 
 			//$result_id = ("SELECT idaluno FROM aluno WHERE $rg ='rg'");
 			function resultId($rg, $conn){
-				$query = ("SELECT idaluno FROM aluno WHERE $rg ='rg'");
+				$query = ("SELECT idaluno FROM aluno WHERE $rg = rg");
 				$data = mysqli_query($conn, $query);
-				return mysqli_result($data, 0);
+				//$resultID = mysqli_result($data,0);
+				var_dump($data);
+				return $data;
 			}
 
-			printf("%s", resultId($rg, $conn));
 
       if(mysqli_affected_rows($conn) != 0){
 				
 				alert("Seu id é: " .$row);
 
-				header("Location: ./pages/login.html");
+				header("Location: index.php");
 				}else{
 				echo "num deu";
 				}

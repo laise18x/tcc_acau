@@ -28,8 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `aluno` (
-  `idaluno` int(11) NOT NULL,
-  `rg` varchar(16) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `idaluno` varchar(11) NOT NULL UNIQUE,
+  `rg` varchar(16) NOT NULL UNIQUE,
   `senha` varchar(22) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `sta` varchar(20) DEFAULT 'online',
@@ -166,9 +167,7 @@ CREATE TABLE `relatorio` (
 --
 -- Índices para tabela `aluno`
 --
-ALTER TABLE `aluno`
-  ADD PRIMARY KEY (`idaluno`),
-  ADD UNIQUE KEY `rg` (`rg`);
+
 
 --
 -- Índices para tabela `aluno_forum`
