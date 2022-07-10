@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 16-Jun-2022 às 21:50
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Host: 127.0.0.1:3306
+-- Tempo de geração: 10/07/2022 às 17:00
+-- Versão do servidor: 10.5.15-MariaDB-cll-lve
+-- Versão do PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -16,38 +16,42 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-
+  CREATE IF NOT EXISTS DATABASE 'u727039026_ACAU_BD';
+  USE DATABASE 'u727039026_ACAU_BD';
 --
--- Banco de dados: `acau`
+-- Banco de dados: `u727039026_ACAU_BD`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `aluno`
+-- Estrutura para tabela `aluno`
 --
 
 CREATE TABLE `aluno` (
-  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `idaluno` varchar(11) NOT NULL UNIQUE,
-  `rg` varchar(16) NOT NULL UNIQUE,
-  `senha` varchar(22) NOT NULL,
+  `id` int(11) NOT NULL,
+  `idaluno` varchar(11) NOT NULL,
+  `rg` varchar(16) NOT NULL,
+  `senha` varchar(60) DEFAULT NULL,
   `nome` varchar(45) NOT NULL,
   `sta` varchar(20) DEFAULT 'online',
   `carg_al` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `aluno`
+-- Despejando dados para a tabela `aluno`
 --
 
-INSERT INTO `aluno` (`idaluno`, `rg`, `senha`, `nome`, `sta`, `carg_al`) VALUES
-(1485663, '7878878', '786786a@er', 'Ana', 'online', 'none');
+INSERT INTO `aluno` (`id`, `idaluno`, `rg`, `senha`, `nome`, `sta`, `carg_al`) VALUES
+(11, '12011unaba', '1201118883', '$2y$04$weOrmUe34BKa9rR.8naxhubC6daCq3FFjF9AivsW.06mQQbpOYVRG', 'LAISE XAVIER', 'online', NULL),
+(12, '88866unaba', '888667661', '$2y$04$1jGs8MwOHzGzm.Ii61KzreqQgDf3tuFC3gGHY5gfK8au74qxfmG7u', 'LAISE XAVIER', 'online', NULL),
+(13, '05626unaba', '0562669562', '$2y$04$ul5k8bkE3xXyc17FiiYEve0ayaInQ0uVVB.rseeJFWIRl5EA89qIG', 'ana', 'online', NULL),
+(15, '65431unaba', '65431436876', '$2y$04$b7rQ6GfkZvaGkKDewWHdHuCJUJuzisqFZRjsqmskE.X90Lzpw2BTm', 'dudatxr21', 'online', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `aluno_forum`
+-- Estrutura para tabela `aluno_forum`
 --
 
 CREATE TABLE `aluno_forum` (
@@ -58,7 +62,7 @@ CREATE TABLE `aluno_forum` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `aluno_p`
+-- Estrutura para tabela `aluno_p`
 --
 
 CREATE TABLE `aluno_p` (
@@ -69,7 +73,7 @@ CREATE TABLE `aluno_p` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `disciplina`
+-- Estrutura para tabela `disciplina`
 --
 
 CREATE TABLE `disciplina` (
@@ -81,7 +85,7 @@ CREATE TABLE `disciplina` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `forum`
+-- Estrutura para tabela `forum`
 --
 
 CREATE TABLE `forum` (
@@ -92,7 +96,7 @@ CREATE TABLE `forum` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `instituicao`
+-- Estrutura para tabela `instituicao`
 --
 
 CREATE TABLE `instituicao` (
@@ -106,7 +110,7 @@ CREATE TABLE `instituicao` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `palavras_banidas`
+-- Estrutura para tabela `palavras_banidas`
 --
 
 CREATE TABLE `palavras_banidas` (
@@ -118,185 +122,53 @@ CREATE TABLE `palavras_banidas` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `postagem`
+-- Estrutura para tabela `postagem`
 --
 
 CREATE TABLE `postagem` (
-  `id_post` int(11) NOT NULL,
-  `dia` date NOT NULL,
-  `autor` varchar(20) NOT NULL,
-  `tforum` varchar(20) NOT NULL,
-  'post' varchar(240) NOT NULL,
-  'tag' varchar(45) NOT NULL,
- 'titulo' varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `professor`
---
-
-CREATE TABLE `professor` (
-  `id_prof` int(11) NOT NULL,
-  `nome_p` varchar(45) DEFAULT NULL,
-  `nota_p` varchar(45) DEFAULT NULL,
-  `id_instituicao` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `relatorio`
---
-
-CREATE TABLE `relatorio` (
-  `id_rel` int(11) NOT NULL,
-  `data_em` date DEFAULT NULL,
-  `hora_emissao` datetime DEFAULT NULL,
-  `id_prof` int(11) DEFAULT NULL,
-  `id_disc` int(11) DEFAULT NULL,
-  `id_aluno` varchar(20) DEFAULT NULL,
-  `idaluno` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `idpost` int(45) NOT NULL,
+  `idaluno` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post` varchar(240) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tag` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `data` datetime NOT NULL DEFAULT current_timestamp(),
+  `tforum` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `aluno`
+-- Índices de tabela `aluno`
 --
-
-
---
--- Índices para tabela `aluno_forum`
---
-ALTER TABLE `aluno_forum`
-  ADD KEY `fk_a` (`idaluno`),
-  ADD KEY `fk_topico` (`topico`);
+ALTER TABLE `aluno`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idaluno` (`idaluno`),
+  ADD UNIQUE KEY `rg` (`rg`);
 
 --
--- Índices para tabela `disciplina`
---
-ALTER TABLE `disciplina`
-  ADD PRIMARY KEY (`id_disc`),
-  ADD UNIQUE KEY `id_disc` (`id_disc`);
-
---
--- Índices para tabela `forum`
---
-ALTER TABLE `forum`
-  ADD PRIMARY KEY (`topico`),
-  ADD KEY `tforum` (`tforum`);
-
---
--- Índices para tabela `instituicao`
---
-ALTER TABLE `instituicao`
-  ADD PRIMARY KEY (`id_instituicao`),
-  ADD UNIQUE KEY `id_instituicao` (`id_instituicao`);
-
---
--- Índices para tabela `palavras_banidas`
---
-ALTER TABLE `palavras_banidas`
-  ADD PRIMARY KEY (`id_PalavrasBanidas`),
-  ADD UNIQUE KEY `nome_Pbanidas` (`nome_Pbanidas`);
-
---
--- Índices para tabela `postagem`
+-- Índices de tabela `postagem`
 --
 ALTER TABLE `postagem`
-  ADD PRIMARY KEY (`id_post`),
-  ADD UNIQUE KEY `id_post` (`id_post`),
-  ADD KEY `fk_forum` (`tforum`);
+  ADD PRIMARY KEY (`idpost`),
+  ADD KEY `idaluno` (`idaluno`),
+  ADD KEY `post` (`post`);
 
 --
--- Índices para tabela `professor`
---
-ALTER TABLE `professor`
-  ADD PRIMARY KEY (`id_prof`),
-  ADD UNIQUE KEY `id_prof` (`id_prof`),
-  ADD KEY `fk_insti` (`id_instituicao`);
-
---
--- Índices para tabela `relatorio`
---
-ALTER TABLE `relatorio`
-  ADD PRIMARY KEY (`id_rel`),
-  ADD KEY `fk_prof` (`id_prof`),
-  ADD KEY `fk_disc` (`id_disc`),
-  ADD KEY `fk_a` (`idaluno`);
-
---
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `idaluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1485664,
-  MODIFY `senha` varchar(60);
---
--- AUTO_INCREMENT de tabela `disciplina`
---
-ALTER TABLE `disciplina`
-  MODIFY `id_disc` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `instituicao`
---
-ALTER TABLE `instituicao`
-  MODIFY `id_instituicao` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `palavras_banidas`
---
-ALTER TABLE `palavras_banidas`
-  MODIFY `id_PalavrasBanidas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `postagem`
 --
 ALTER TABLE `postagem`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `professor`
---
-ALTER TABLE `professor`
-  MODIFY `id_prof` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `relatorio`
---
-ALTER TABLE `relatorio`
-  MODIFY `id_rel` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `aluno_forum`
---
-ALTER TABLE `aluno_forum`
-  ADD CONSTRAINT `fk_a` FOREIGN KEY (`idaluno`) REFERENCES `aluno` (`idaluno`),
-  ADD CONSTRAINT `fk_topico` FOREIGN KEY (`topico`) REFERENCES `forum` (`topico`);
-
---
--- Limitadores para a tabela `postagem`
---
-ALTER TABLE `postagem`
-  ADD CONSTRAINT `fk_forum` FOREIGN KEY (`tforum`) REFERENCES `forum` (`tforum`);
-
---
--- Limitadores para a tabela `professor`
---
-ALTER TABLE `professor`
-  ADD CONSTRAINT `fk_insti` FOREIGN KEY (`id_instituicao`) REFERENCES `instituicao` (`id_instituicao`);
+  MODIFY `idpost` int(45) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
