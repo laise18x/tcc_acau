@@ -25,15 +25,15 @@
       crossorigin="anonymous"
     ></script>
     <script type="module" src="../js/postagens.js"></script>
+    <!-- Estilo customizado -->
+    <link rel="stylesheet" type="text/css" href="../css/forum.css" />
+    <link rel="stylesheet" href="../css/modalComments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <!--Chama valor do button pra o php-->
     <script src="button.js"></script>
     <!--Chamando o Ajax para realizar a requisição-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
     </script>
-    <!-- Estilo customizado -->
-    <link rel="stylesheet" type="text/css" href="../css/forum.css" />
-    <link rel="stylesheet" href="../css/modalComments.css" />
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
   </head>
 
   <body>
@@ -98,7 +98,7 @@
           <div class="info sticky-top">
             <div class="">
               <h4 class="nomeSocial mt-5 pb-3">Nome social</h4>
-              <h4 class="cursoNome pb-3">Curso</h4>
+              <h4 class="cursoNome pb-3">Desenvolvimento de Sistemas</h4>
               <a class="minhasPostagens pb-4" href="#">Minhas postagens</a>
               <p class="regras pt-4 text-center">Regras</p>
               <ol class="px-3 lh-lg">
@@ -131,17 +131,85 @@
           </div>
 
           <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modalCreatePost">
+              <div class="modal-content">
+                <div class="modal-header headerCreatePost">
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Fechar"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <label class="postTitle"
+                    >Insira o título da sua postagem:</label
+                  >
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Título"
+                    aria-label="título da postagem"
+                    value=titulo
+                    
+            
+                  />
+                  <label class="createPostContent mt-4"
+                    >Insira o conteúdo da sua postagem:</label
+                  >
+            
+                  <textarea
+                    class="form-control"
+                    id="createPostContent"
+                    rows="5"
+                  ></textarea>
+                  <label class="tags mt-4">Tags:</label>
+                  <input class="form-control" type="text" placeholder="Tags" />
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="flexCheckDefault"
+                    />
+                    <label class="form-check-label" for="flexCheckDefault"
+                      >Postagem Anônima
+                    </label>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                <a href="postaphp"> </a><button type="button" value='concluir' class="btn btn-concluir">
+                    Concluir
+                  </button>
+                  
+                 
          <?php
-require('conexao.php');
-require('filtro.php');
-
-  if(isset($_SESSION)){
+         
+         include("conexao.php");
+         include("filtro.php");
+         
+         $concluir=$_POST['concluir'];
+          $titulo=$_POST['titulo'];
+     $post=$_POST['post'];
+                          $tag=$_POST['tag'];
+                            $data=$_POST['tag'];
+                         
+         
+         if(isset($_POST['concluir'])){
          $seleciona= mysqli_query("SELECT * FROM post ORDER BY idpost DESC");
          $idaluno=mysqli_num_rows($seleciona);
          
          if(idaluno<=0){
              
-             alert("Nenhuma postagem foi criada por você ainda. Comece já a postar :)");
+             alert("Nenhuma postagem foi criada por você ainda. Comece já");
+             
          }else{
              while($row=mysqli_fetch_array($seleciona)){
                
@@ -155,25 +223,25 @@ require('filtro.php');
                               $sql= "SELECT * FROM postagem WHERE nome=$nome";
                               $query=mysqli_query($sql);
                               $linha=mysqli_fetch_assoc($query);
-                 
+                              
+                 return('filtro.php');
              }
          }
-  }else{
-     alert("você não esta logado portanto não podes enviar posts");
-  }
+         }
          
          
          
          ?>
    <div class="card">
   <div class="card-body">
-    <h5 class="card-title"><?php echo $titulo; ?></h5>
+    <h5 class="card-title"><?php echo $titulo ?></h5>
     <?php if($post!=null){?><p class="card-text"><?php echo $post; }?></p>
    <?php if($tag!=null){?> <h4 class="card-text"><?php echo $tag; }?></h4>
    <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Postado em: <?php echo $data?></p>
     
-
-
+  </div>
+</div>
+              </div>
             </div>
           </div>
         </div>
