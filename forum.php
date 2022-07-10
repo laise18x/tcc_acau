@@ -25,6 +25,11 @@
       crossorigin="anonymous"
     ></script>
     <script type="module" src="../js/postagens.js"></script>
+    <!--Chama valor do button pra o php-->
+    <script src="button.js"></script>
+    <!--Chamando o Ajax para realizar a requisição-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
     <!-- Estilo customizado -->
     <link rel="stylesheet" type="text/css" href="../css/forum.css" />
     <link rel="stylesheet" href="../css/modalComments.css" />
@@ -127,40 +132,48 @@
 
           <!-- Modal -->
          <?php
-require('conexao.php')
-if(isset($_POST) & !empty($_POST)){
-	$titulo = mysqli_real_escape_string($conn, $_POST['titulo']);
-	$post = mysqli_real_escape_string($conn, $_POST['post']);
-	$tag = mysqli_real_escape_string($conn, $_POST['tag']);
- 
-	$isql = "INSERT INTO `postagem`( `titulo`, `post`, `tag`) VALUES ('$titulo','$post','$tag')";
-	$ires = mysqli_query($connection, $isql) or die(mysqli_error($connection));
-	if($ires){
-		$smsg = "Post feito";
-	}else{
-		$fmsg = "Falhou";
-	}
- 
-}
-          $sql = "SELECT * FROM post";
-$res = mysqli_query($conn, $sql);
+require('conexao.php');
+require('filtro.php');
 
-          
-          <?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
-<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
-          ?>
-          
-          
-	while ( $r = mysqli_fetch_assoc($res)) {
-?>
-	<tr> 
-		<th scope="row"><?php echo $r['nome']; ?></th> 
-		<td><?php echo $r['curso']; ?></td> 
-		<td><?php echo $r['post']; ?></td> 
-		<td><?php echo $r['dia']; ?></td> 
-		<td><a href="edita.php?id=<?php echo $r['id']; ?>">Editar</a> <a href="deleta.php?id=<?php echo $r['id']; ?>">Deletar</a></td> 
-	</tr> 
-<?php } ?>
+  if(isset($_SESSION)){
+         $seleciona= mysqli_query("SELECT * FROM post ORDER BY idpost DESC");
+         $idaluno=mysqli_num_rows($seleciona);
+         
+         if(idaluno<=0){
+             
+             alert("Nenhuma postagem foi criada por você ainda. Comece já a postar :)");
+         }else{
+             while($row=mysqli_fetch_array($seleciona)){
+               
+                $idpost=$row[idpost];
+                      $titulo=$row[titulo];
+                        $post=$row[post];
+                          $tag=$row[tag];
+                            $dia=$row[dia];
+                              $nome=$row[nome];
+                             
+                              $sql= "SELECT * FROM postagem WHERE nome=$nome";
+                              $query=mysqli_query($sql);
+                              $linha=mysqli_fetch_assoc($query);
+                 
+             }
+         }
+  }else{
+     alert("você não esta logado portanto não podes enviar posts");
+  }
+         
+         
+         
+         ?>
+   <div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><?php echo $titulo; ?></h5>
+    <?php if($post!=null){?><p class="card-text"><?php echo $post; }?></p>
+   <?php if($tag!=null){?> <h4 class="card-text"><?php echo $tag; }?></h4>
+   <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Postado em: <?php echo $data?></p>
+    
+
+
             </div>
           </div>
         </div>
