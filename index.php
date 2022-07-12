@@ -51,7 +51,7 @@
         </div>
 
         <div>
-          <a href="cadastro.html">Criar uma conta</a>
+          <a href="./pages/cadastro.html">Criar uma conta</a>
         </div>
       </form>
   <?php
