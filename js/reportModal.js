@@ -1,84 +1,395 @@
-let bootstrapModal;
-export function mountReportModalHTML() {
-  
-  const modalTemplate = document.createElement("span");
-  modalTemplate.innerHTML = `
-    <div class="modal fade show" id="myModal" role="dialog">
-      <link rel="stylesheet" type="text/css" href="css/modal-denuncia.css" />
-      <div class="modal-dialog">
-        <!-- Modal content-->
+export const generateModal = (modalId) => {
+  return `
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btnDisciplina" data-bs-target="#${modalId}" data-bs-toggle="modal">
+    </button>
+    <!-- The Modal 1 -->
+    <div class="modal modalDisciplinaId" id="${modalId}">
+      <div class="modal-dialog modal-xl">
         <div class="modal-content">
+          <!-- Modal Header -->
           <div class="modal-header">
-            <h4 class="modal-title">Denunciar</h4>
-            <button type="button" class="close btn btn-close" data-bs-dismiss="modal"></button>
-            
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
           </div>
 
-          <div class="modal-body" style="padding:40px 50px;">
-            <!--Texto no corpo do modal -->
-            <p>Informe a razão da denúncia:</p>
-            <textarea type="text" class="textoDenuncia form-control" id="denuncia" rows="4"></textarea>
-            <small><span id="cont">140</span> caracteres restantes</small>
-            
-            <br><br>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div id="container">
+              <div class="row"> 
+                <div class="col"> 
+                  <h4 class="disciplinaTitle"></h4>
+                  <h4 class="disciplinaTeacher">Docente: João Pedro Ribeiro Batista</h4>
+                </div>
+                <div class="col-4"> 
+                  <button
+                  type="button"
+                  class="btn btn-lg btnAvaliacao"
+                  data-bs-toggle="modal"
+                  data-bs-target="#myModal2"
+                >
+                  Avaliar Disciplina/Docente
+                </button>
+                </div>
+              </div>
 
-            <p>A postagem viola: </p>
+              <hr>
+              <h5 class="dicasEstudo">Dicas de Estudo</h5>
 
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                A postagem fere os direitos humanos.
-              </label>
+              <img src="../imagens/em-breve.png" class="imgBreve mx-auto d-block" />
+
+              <h3 class="breve d-flex justify-content-center">Em breve!</h3>
             </div>
-
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                A postagem usa palavras de baixo calão.
-              </label>
-            </div>
-
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                A postagem ofende colegas, professores ou a instituição de ensino.
-              </label>
-            </div>
-
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                A postagem faz anúncios.
-              </label>
-            </div>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-concluir" data-bs-dismiss="modal">Concluir</button>
           </div>
         </div>
       </div>
     </div>
-  `;
-  const modalReport = modalTemplate.children.item(0);
 
-  modalReport
-    .querySelector("#denuncia")
-    .addEventListener("input", function (event) {
-      const limite = 140;
-      const textoAtual = event.target.value;
-      const tamanhoTexto = textoAtual.length;
+    <!-- The Modal 2 -->
+    <div class="modal" id="myModal2">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <button type="button" class="btn" data-bs-target="#${modalId}" data-bs-toggle="modal">
+            <i class="fa-solid fa-lg fa-angle-left"></i> Voltar
+            </button>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
 
-      if (tamanhoTexto > limite) {
-        event.target.value = textoAtual.substring(0, limite);
-      } else {
-        const resto = limite - tamanhoTexto;
-        modalReport.querySelector("#cont").innerHTML = resto;
-      }
-    });
+          <div class="modal-body">
+            <!-- Início Modal body -->
 
-  document.body.appendChild(modalReport);
-  bootstrapModal = new bootstrap.Modal(modalReport);
+            <!-- Início navegação tab -->
 
-  bootstrapModal.show();
-}
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="home-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#home"
+                  type="button"
+                  role="tab"
+                  aria-controls="home"
+                  aria-selected="true"
+                >
+                  Avaliar Disciplina
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="profile-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#profile"
+                  type="button"
+                  role="tab"
+                  aria-controls="profile"
+                  aria-selected="false"
+                >
+                  Avaliar Docente
+                </button>
+              </li>
+            </ul>
+
+            <!-- Fim navegação tab -->
+
+            <div class="tab-content" id="myTabContent">
+              <!--Início avaliação da disciplina -->
+              <div
+                class="tab-pane fade show active"
+                id="home"
+                role="tabpanel"
+                aria-labelledby="home-tab"
+              >
+                <br />
+
+                <p class="pergunta">A disciplina foi apresentada com objetivos claros?</p>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao1"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Nunca
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao1"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    As vezes
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao1"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Metade do tempo
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao1"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Quase sempre
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao1"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Sempre
+                  </label>
+                </div>
+
+                <br />
+
+                <p class="pergunta">
+                  A distribuição de conteúdo ao longo do curso foi adequada?
+                </p>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao2"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Nunca
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao2"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    As vezes
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao2"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Metade do tempo
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao2"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Quase sempre
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao2"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Sempre
+                  </label>
+                </div>
+
+                <br /><br />
+              </div>
+              <!--Fim avaliação da disciplina -->
+
+              <div
+                class="tab-pane fade"
+                id="profile"
+                role="tabpanel"
+                aria-labelledby="profile-tab"
+              >
+                <!--Início avaliação do docente -->
+
+                <br />
+
+                <p class="pergunta">O grau de domínio do professor sobre o conteúdo foi:</p>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao3"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Muito baixo
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao3"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Baixo
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao3"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Razoável
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao3"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Alto
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao3"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Muito alto
+                  </label>
+                </div>
+
+                <br />
+
+                <p class="pergunta">
+                  Você faria outra matéria com o mesmo professor ou indicaria
+                  ele para outro aluno?
+                </p>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao4"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Sim
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao4"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Não
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name = "opcao4"
+                    value=""
+                    id="flexCheckDefault"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Talvez
+                  </label>
+                </div>
+
+                <br />
+
+                <!-- Modal footer -->
+                <div class="modal-footer d-flex justify-content-center">
+                  <button type="button" class="btn btnConcluir">Concluir</button>
+                </div>
+              </div>
+              <!--Fim avaliação do docente -->
+            </div>
+          </div>
+          <!-- Fim Modal body -->
+        </div>
+      </div>
+    </div>
+    `;
+};
