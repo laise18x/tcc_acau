@@ -1,6 +1,6 @@
 //Contador
 
-var contadorDataFinal = new Date("Jul 18, 2022 11:30:00").getTime();
+var contadorDataFinal = new Date("July 18, 2022 23:30:00").getTime();
 
 var segundosUpdate = setInterval(function() {
   var agora = new Date().getTime();

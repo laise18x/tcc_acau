@@ -12,6 +12,9 @@ function createModalBtn(disciplina, container) {
 
     const disciplinaName = modalTemplate.querySelector(".disciplinaTitle");
     disciplinaName.textContent = disciplina.disciplina;
+
+    const professorName = modalTemplate.querySelector(".disciplinaTeacher");
+    professorName.textContent = disciplina.professor;
     container.appendChild(modalTemplate);
   }
 }

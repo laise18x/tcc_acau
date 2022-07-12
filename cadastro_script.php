@@ -44,24 +44,24 @@
 			$options = array("cost"=>4);
 			$hashPassword = password_hash($senha,PASSWORD_BCRYPT,$options);
       $result_q = "INSERT INTO aluno(idaluno, nome, rg, senha) VALUES ('$id','$nome','$rg','$hashPassword')";
-      $resultado_usuario = mysqli_query($conn, $result_q);
-
-			//$result_id = ("SELECT idaluno FROM aluno WHERE $rg ='rg'");
+			
+      // $resultado_usuario = mysqli_query($conn, $result_q);
+			// $resultRg = $mysqli->query("SELECT COUNT(*) FROM aluno WHERE idaluno = $id");
+			// $row = $resultRg->fetch_row();
+			// if ($row[0] > 0) {
+    	// 	echo "Aluno já cadastrado";
+			// }
 			function resultId($rg, $conn){
 				$query = ("SELECT idaluno FROM aluno WHERE $rg = rg");
 				$data = mysqli_query($conn, $query);
-				//$resultID = mysqli_result($data,0);
 				var_dump($data);
 				return $data;
 			}
-
-
+			
       if(mysqli_affected_rows($conn) != 0){
 				
-				alert("Seu id é: " .$id);
-				}else{
-				echo "Aconteceu um erro ao cadastrar";
-				}
+				alert("Seu id é:  .$id \n Anote!");
+			}
 
 
   ?>

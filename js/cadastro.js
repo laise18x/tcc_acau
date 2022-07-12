@@ -11,7 +11,7 @@ const upload = () => {
 
 /* Início contagem de caracteres no campo de senha */
 
-senha.oninput = function () {
+senha.oninput = function() {
   maxCarac = 30;
 
   if (senha.value.length >= maxCarac) {
