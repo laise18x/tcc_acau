@@ -1,3 +1,15 @@
+<?php
+    include_once 'Models/AlunoModel.php';
+    //$aluno = new AlunoModel();
+
+    echo $_SESSION['idUser'];
+    if (isset($_POST['senha'])) {
+
+
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -79,45 +91,7 @@
   <h2>Mudar minha senha</h2>
 
   <div id="container" class="container1">
-      
-      <?php
-     if (isset($_POST['senha'])) {
 
-    $usr_id            = $_SESSION['usr_id'];
-    $senha      = sha1(strip_tags($_POST['senha_atual']));
-    $senha_nova        = sha1(strip_tags($_POST['senha_nova']));
-    $confirme_senha    = sha1(strip_tags($_POST['confirme_senha']));
-
-    $sql = mysql_query("SELECT senha FROM aluno WHERE senha = '$senha' ");
-    $row = mysql_fetch_array($sql);
-    $senha_banco = $row['senha'];
-
-    if($senha == "" && $senha_nova == "" && $confirme_senha == "") {
-        echo "
-            <script>
-                alert('Os campos das senhas não podem ser nulos.');
-                window.location='../configuracoes.php';
-            </script>";
-    } else {
-        if (($senha != $senha_banco) && ($senha_nova != $confirme_senha) ) {
-            echo "
-            <script>
-                alert('As senhas não conhecidem.');
-                novasenha.php';
-            </script>";
-        } else {
-            if ($result=mysql_query("UPDATE aluno SET senha = '$confirme_senha' WHERE idaluno = '$idaluno' ")) {
-                echo "
-            <script>
-
-                novasenha.php?success=yes';
-            </script>";
-            }
-        }
-    }
-}
-    
-    ?>
 
   </div>
 

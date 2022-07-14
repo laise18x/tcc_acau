@@ -117,7 +117,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao1"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -129,7 +130,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao1"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -141,7 +143,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao1"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -153,7 +156,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao1"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -165,7 +169,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao1"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -183,7 +188,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao2"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -195,7 +201,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao2"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -207,7 +214,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao2"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -219,7 +227,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao2"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -231,7 +240,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao2"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -259,7 +269,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao3"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -271,7 +282,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao3"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -283,7 +295,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao3"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -295,7 +308,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao3"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -307,7 +321,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao3"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -326,7 +341,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao4"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -338,7 +354,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao4"
                     value=""
                     id="flexCheckDefault"
                   />
@@ -350,7 +367,8 @@ export const generateModal = (modalId) => {
                 <div class="form-check">
                   <input
                     class="form-check-input"
-                    type="checkbox"
+                    type="radio"
+                    name = "opcao4"
                     value=""
                     id="flexCheckDefault"
                   />

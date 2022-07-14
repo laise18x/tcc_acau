@@ -1,3 +1,10 @@
+<?php
+//include_once 'Models/AlunoModel.php';
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,16 +31,11 @@
       src="https://kit.fontawesome.com/c38b27744a.js"
       crossorigin="anonymous"
     ></script>
-    <script type="module" src="../js/postagens.js"></script>
+    <script type="module" src="js/postagens.js"></script>
     <!-- Estilo customizado -->
-    <link rel="stylesheet" type="text/css" href="../css/forum.css" />
-    <link rel="stylesheet" href="../css/modalComments.css" />
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
-    <!--Chama valor do button pra o php-->
-    <script src="button.js"></script>
-    <!--Chamando o Ajax para realizar a requisição-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-    </script>
+    <link rel="stylesheet" type="text/css" href="css/forum.css" />
+    <link rel="stylesheet" href="css/modalComments.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
 
   <body>
@@ -43,7 +45,7 @@
       <!--navbar-->
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <a class="navbar-brand" href="login.html">Sair</a>
+          <a class="navbar-brand" href="/index.php">Sair</a>
           <button
             class="navbar-toggler"
             type="button"
@@ -61,13 +63,13 @@
           >
             <ul class="navbar-nav mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="pages/index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="suporte.html">Suporte</a>
+                <a class="nav-link" href="pages/suporte.html">Suporte</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="configuracoes.html"
+                <a class="nav-link" href="configuracoes.php"
                   >Configurações</a
                 >
               </li>
@@ -77,10 +79,10 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="fluxograma.html">Disciplinas</a>
+                <a class="nav-link" href="pages/fluxograma.html">Disciplinas</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="guiadecarreira.html"
+                <a class="nav-link" href="pages/guiadecarreira.html"
                   >Guia de Carreira</a
                 >
               </li>
@@ -97,7 +99,8 @@
           <!--Início div lateral -->
           <div class="info sticky-top">
             <div class="">
-              <h4 class="nomeSocial mt-5 pb-3">Nome social</h4>
+                <?php echo "<h4 class='nomeSocial mt-5 pb-3'>".$_SESSION['nomeUser']."</h4>";
+                ?>
               <h4 class="cursoNome pb-3">Desenvolvimento de Sistemas</h4>
               <a class="minhasPostagens pb-4" href="#">Minhas postagens</a>
               <p class="regras pt-4 text-center">Regras</p>
@@ -185,62 +188,10 @@
                   </div>
                 </div>
                 <div class="modal-footer">
-                <a href="postaphp"> </a><button type="button" value='concluir' class="btn btn-concluir">
+                <a href="../posta.php" method="POST" > </a><button type="button" class="btn btn-concluir">
                     Concluir
                   </button>
-                  
-                 
-         <?php
-         
-         include("conexao.php");
-         include("filtro.php");
-         
-         $concluir=$_POST['concluir'];
-          $titulo=$_POST['titulo'];
-     $post=$_POST['post'];
-                          $tag=$_POST['tag'];
-                            $data=$_POST['tag'];
-                         
-         
-         if(isset($_POST['concluir'])){
-         $seleciona= mysqli_query("SELECT * FROM post ORDER BY idpost DESC");
-         $idaluno=mysqli_num_rows($seleciona);
-         
-         if(idaluno<=0){
-             
-             alert("Nenhuma postagem foi criada por você ainda. Comece já");
-             
-         }else{
-             while($row=mysqli_fetch_array($seleciona)){
-               
-                $idpost=$row[idpost];
-                      $titulo=$row[titulo];
-                        $post=$row[post];
-                          $tag=$row[tag];
-                            $dia=$row[dia];
-                              $nome=$row[nome];
-                             
-                              $sql= "SELECT * FROM postagem WHERE nome=$nome";
-                              $query=mysqli_query($sql);
-                              $linha=mysqli_fetch_assoc($query);
-                              
-                 return('filtro.php');
-             }
-         }
-         }
-         
-         
-         
-         ?>
-   <div class="card">
-  <div class="card-body">
-    <h5 class="card-title"><?php echo $titulo ?></h5>
-    <?php if($post!=null){?><p class="card-text"><?php echo $post; }?></p>
-   <?php if($tag!=null){?> <h4 class="card-text"><?php echo $tag; }?></h4>
-   <p><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Postado em: <?php echo $data?></p>
-    
-  </div>
-</div>
+                </div>
               </div>
             </div>
           </div>

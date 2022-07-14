@@ -1,3 +1,31 @@
+<?php
+include_once 'Models/AlunoModel.php';
+session_start();
+
+    if(isset($_POST['id']) && isset($_POST['senha'])) {
+    $idaluno = $_POST['id'];
+    $senha = $_POST['senha'];
+
+    $_SESSION['idUser'] = $idaluno;
+    $aluno = new AlunoModel();
+
+    $obj = $aluno->getByIdaluno($idaluno);
+    $_SESSION['nomeUser']  = $obj['nome'];
+
+    $novasenha = $aluno->getByIdAndSenha($idaluno);
+
+    $senhaDescriptografada = base64_decode($novasenha['senha']);
+
+    $_SESSION['senhaUser'] = $senhaDescriptografada;
+
+        if($senhaDescriptografada == $senha){
+            header('location: pages/index.html');
+        }else{
+           echo "<script>alert('Usuário não encontrado')</script>";
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,37 +79,9 @@
         </div>
 
         <div>
-          <a href="./pages/cadastro.html">Criar uma conta</a>
+          <a href="cadastro.php">Criar uma conta</a>
         </div>
       </form>
-  <?php
-  
-  require('conexao.php');
-
-	if(isset($_POST['id']) && isset($_POST['senha'])){
-    $idaluno=$_POST['id'];
-    $senha=$_POST['senha'];
-    
-    $check_user= ("SELECT * from aluno WHERE '{$idaluno}' = idaluno");
-    
-    $run=mysqli_query($conn,$check_user);
-    $checkPassword = mysqli_fetch_object($run)->senha;
-
-		if($checkPassword && password_verify($senha, $checkPassword)){
-    $_SESSION['idaluno'] = $idaluno;
-    header("Location: https://acau.online/pages/index.html");
-    die();
-    } else{
-        unset ($_SESSION['idaluno']);
-        header("Location: pages/cadastro.html");
-      die();
-      }
-  }
-
-
-      ?>
-
-	</div>
-
+    </div>
 </body>
 </html>

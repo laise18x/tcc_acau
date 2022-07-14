@@ -23,13 +23,13 @@
 		<h1>Cadastre-se</h1>
 
     <?php
-      include_once("conexao.php");
+//      include_once("conexao.php");
 			
 			function alert($msg) {
 				echo "
 				<script type='text/javascript'>
 				alert('$msg');
-				window.location = 'index.php';
+				//window.location = 'index.php';
 				</script>
 				";
 				
@@ -38,30 +38,54 @@
       $nome = $_POST['nome'];
       $rg = $_POST['rg'];
       $senha = $_POST['senha'];
+      $id = substr($rg,0,5)."unaba";
 
-			$id = substr($rg,0,5)."unaba";
+      include_once ("Models/AlunoModel.php");
 
-			$options = array("cost"=>4);
-			$hashPassword = password_hash($senha,PASSWORD_BCRYPT,$options);
-      $result_q = "INSERT INTO aluno(idaluno, nome, rg, senha) VALUES ('$id','$nome','$rg','$hashPassword')";
-			
+      $alunoModel = new AlunoModel();
+      //$alunoModel = $alunoModel->getByRg($rg);
+     // if($alunoModel->rg == $rg){
+          //header('index.php');
+//          alert("Aluno já possui cadastro");
+          //exit();
+      //}else{
+          $alunoModel->idaluno = $id;
+          $alunoModel->rg = $rg;
+          $alunoModel->nome = $nome;
+
+          $criptografada = base64_encode($senha);
+          $alunoModel->senha = $criptografada;
+
+          $alunoModel->save($alunoModel);
+//          header("Location: https://acau.online/pages/cadastro.html");
+//          die();
+     // }
+
+
+
+
+//			$options    = array("cost"=>4);
+//			$hashPassword = password_hash($senha,PASSWORD_BCRYPT,$options);
+//      $result_q = "INSERT INTO aluno(idaluno, nome, rg, senha) VALUES ('$id','$nome','$rg','$hashPassword')";
+//      alert(var_dump($conn));
+//			resultId($rg, $conn);
       // $resultado_usuario = mysqli_query($conn, $result_q);
 			// $resultRg = $mysqli->query("SELECT COUNT(*) FROM aluno WHERE idaluno = $id");
 			// $row = $resultRg->fetch_row();
 			// if ($row[0] > 0) {
     	// 	echo "Aluno já cadastrado";
 			// }
-			function resultId($rg, $conn){
-				$query = ("SELECT idaluno FROM aluno WHERE $rg = rg");
-				$data = mysqli_query($conn, $query);
-				var_dump($data);
-				return $data;
-			}
-			
-      if(mysqli_affected_rows($conn) != 0){
-				
-				alert("Seu id é:  .$id \n Anote!");
-			}
+//			function resultId($rg, $conn){
+//				$query = ("SELECT idaluno FROM aluno WHERE $rg = rg");
+//				$data = mysqli_query($conn, $query);
+//				var_dump($data);
+//				return $data;
+//			}
+//
+//      if(mysqli_affected_rows($conn) != 0){
+//
+//				alert("Seu id é:  .$id \n Anote!");
+//			}
 
 
   ?>

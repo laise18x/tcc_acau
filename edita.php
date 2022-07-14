@@ -126,7 +126,7 @@
           </div>
 
           <!-- Modal -->
-         <?php
+
 
         <?php
 require('conexao.php');
